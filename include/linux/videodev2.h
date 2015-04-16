@@ -1066,7 +1066,6 @@ struct v4l2_bt_timings {
 #define V4L2_DV_VSYNC_POS_POL	0x00000001
 #define V4L2_DV_HSYNC_POS_POL	0x00000002
 
-
 /* DV timings */
 struct v4l2_dv_timings {
 	__u32 type;
