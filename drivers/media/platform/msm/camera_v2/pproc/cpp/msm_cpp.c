@@ -67,6 +67,9 @@ typedef struct _msm_cpp_timer_t {
 
 msm_cpp_timer_t cpp_timers;
 
+static int msm_cpp_buffer_ops(struct cpp_device *cpp_dev,
+	uint32_t buff_mgr_ops, struct msm_buf_mngr_info *buff_mgr_info);
+
 #if CONFIG_MSM_CPP_DBG
 #define CPP_DBG(fmt, args...) pr_err(fmt, ##args)
 #else
@@ -747,6 +750,13 @@ static int cpp_init_hardware(struct cpp_device *cpp_dev)
 			goto req_irq_fail;
 		}
 		cpp_dev->buf_mgr_subdev = msm_buf_mngr_get_subdev();
+		rc = msm_cpp_buffer_ops(cpp_dev,
+			VIDIOC_MSM_BUF_MNGR_INIT, NULL);
+		if (rc < 0) {
+			pr_err("buf mngr init failed\n");
+			free_irq(cpp_dev->irq->start, cpp_dev);
+			goto req_irq_fail;
+		}
 	}
 
 	cpp_dev->hw_info.cpp_hw_version =
@@ -804,7 +814,12 @@ bus_scale_register_failed:
 
 static void cpp_release_hardware(struct cpp_device *cpp_dev)
 {
+	int32_t rc;
 	if (cpp_dev->state != CPP_STATE_BOOT) {
+		rc = msm_cpp_buffer_ops(cpp_dev,
+			VIDIOC_MSM_BUF_MNGR_DEINIT, NULL);
+		if (rc < 0)
+			pr_err("error in buf mngr deinit rc=%d\n", rc);
 		free_irq(cpp_dev->irq->start, cpp_dev);
 		tasklet_kill(&cpp_dev->cpp_tasklet);
 		atomic_set(&cpp_dev->irq_cnt, 0);
@@ -815,11 +830,11 @@ static void cpp_release_hardware(struct cpp_device *cpp_dev)
 	iounmap(cpp_dev->cpp_hw_base);
 	msm_cam_clk_enable(&cpp_dev->pdev->dev, cpp_clk_info,
 		cpp_dev->cpp_clk, ARRAY_SIZE(cpp_clk_info), 0);
-	if (0) {
-		regulator_disable(cpp_dev->fs_cpp);
-		regulator_put(cpp_dev->fs_cpp);
-		cpp_dev->fs_cpp = NULL;
-	}
+
+	regulator_disable(cpp_dev->fs_cpp);
+	regulator_put(cpp_dev->fs_cpp);
+	cpp_dev->fs_cpp = NULL;
+
 	if (cpp_dev->stream_cnt > 0)
 		pr_err("error: stream count active\n");
 	cpp_dev->stream_cnt = 0;
@@ -2034,6 +2049,11 @@ static int __devinit cpp_probe(struct platform_device *pdev)
 	cpp_dev->work =
 		(struct msm_cpp_work_t *)kmalloc(sizeof(struct msm_cpp_work_t),
 		GFP_KERNEL);
+    if(!cpp_dev->work) {
+		pr_err("no enough memory\n");
+		rc = -ENOMEM;
+		goto ERROR4;
+	}
 	INIT_WORK((struct work_struct *)cpp_dev->work, msm_cpp_do_timeout_work);
 	cpp_dev->cpp_open_cnt = 0;
 	cpp_dev->is_firmware_loaded = 0;
@@ -2041,7 +2061,8 @@ static int __devinit cpp_probe(struct platform_device *pdev)
 	atomic_set(&cpp_timers.used,0);
 	cpp_dev->fw_name_bin = NULL;
 	return rc;
-
+ERROR4:
+	destroy_workqueue(cpp_dev->timer_wq);
 ERROR3:
 	release_mem_region(cpp_dev->mem->start, resource_size(cpp_dev->mem));
 ERROR2:

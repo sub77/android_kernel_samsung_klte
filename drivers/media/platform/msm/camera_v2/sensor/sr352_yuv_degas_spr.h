@@ -44,7 +44,7 @@ static struct msm_camera_i2c_reg_conf sr352_Init_Reg[] = {
 {0x01, 0x07,},
 {0x01, 0x01,},
 
-{0x05, 0x04,}, // ver1.13
+{0x05, 0x03,}, // ver1.03
 {0x0d, 0xaa,}, // ESD Check Register
 {0x0f, 0xaa,}, // ESD Check Register
 
@@ -4989,7 +4989,7 @@ static struct msm_camera_i2c_reg_conf sr352_Init_Reg[] = {
 {0x28, 0x40,},
 {0x29, 0x37,},//Outdoor 1240 add 720p
 {0x2a, 0x70,},
-{0x2b, 0xbf,},//Outdoor 1270 // Bayer Sharpness ENB add 720p
+{0x2b, 0x9f,},//Outdoor 1270 // Bayer Sharpness ENB add 720p
 {0x2c, 0x71,},
 {0x2d, 0x1a,},//Outdoor 1271 //Bayer HPF Gain
 {0x2e, 0x72,},
@@ -8342,7 +8342,7 @@ static struct msm_camera_i2c_reg_conf sr352_Init_Reg_01[] = {
 {0x01, 0x07,},
 {0x01, 0x01,},
 
-{0x05, 0x04,}, // ver1.13
+{0x05, 0x03,}, // ver1.03
 {0x0d, 0xaa,}, // ESD Check Register
 {0x0f, 0xaa,}, // ESD Check Register
 
@@ -13290,7 +13290,7 @@ static struct msm_camera_i2c_reg_conf sr352_Init_Reg_01[] = {
 {0x28, 0x40,},
 {0x29, 0x37,},//Outdoor 1240 add 720p
 {0x2a, 0x70,},
-{0x2b, 0xbf,},//Outdoor 1270 // Bayer Sharpness ENB add 720p
+{0x2b, 0x9f,},//Outdoor 1270 // Bayer Sharpness ENB add 720p
 {0x2c, 0x71,},
 {0x2d, 0x1a,},//Outdoor 1271 //Bayer HPF Gain
 {0x2e, 0x72,},
@@ -16670,7 +16670,7 @@ static struct msm_camera_i2c_reg_conf sr352_Enterpreview_1024x768[] = {
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Low
 {0x03, 0x12,},
-{0x70, 0xbE,},	//Bit[0]=Low
+{0x70, 0x9E,},	//Bit[0]=Low
 
 {0x03, 0x00,},
 {0x1e, 0x01,}, // frame update
@@ -16773,7 +16773,7 @@ static struct msm_camera_i2c_reg_conf sr352_Enterpreview_1024x768_01[] = {
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Low
 {0x03, 0x12,},
-{0x70, 0xbE,},	//Bit[0]=Low
+{0x70, 0x9E,},	//Bit[0]=Low
 
 {0x03, 0x00,},
 {0x1e, 0x01,}, // frame update
@@ -16876,7 +16876,7 @@ static struct msm_camera_i2c_reg_conf sr352_Enterpreview_1024x576[] = {
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Low
 {0x03, 0x12,},
-{0x70, 0xbE,},	//Bit[0]=Low
+{0x70, 0x9E,},	//Bit[0]=Low
 
 {0x03, 0x00,},
 {0x1e, 0x01,}, // frame update
@@ -16991,7 +16991,7 @@ static struct msm_camera_i2c_reg_conf sr352_Enterpreview_1024x576_01[] = {
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Low
 {0x03, 0x12,},
-{0x70, 0xbE,},	//Bit[0]=Low
+{0x70, 0x9E,},	//Bit[0]=Low
 
 {0x03, 0x00,},
 {0x1e, 0x01,}, // frame update
@@ -17057,7 +17057,6 @@ static struct msm_camera_i2c_reg_conf sr352_Enterpreview_1024x576_01[] = {
 {0xff, 0x01,}, //delay 10ms
 };
 
-
 static struct msm_camera_i2c_reg_conf sr352_Enterpreview_640x480[] = {
 
 {0x03, 0xc1,},
@@ -17106,7 +17105,7 @@ static struct msm_camera_i2c_reg_conf sr352_Enterpreview_640x480[] = {
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Low
 {0x03, 0x12,},
-{0x70, 0xbE,},	//Bit[0]=Low
+{0x70, 0x9E,},	//Bit[0]=Low
 
 {0x03, 0x00,},
 {0x1e, 0x01,}, // frame update
@@ -17219,7 +17218,7 @@ static struct msm_camera_i2c_reg_conf sr352_Enterpreview_640x480_01[] = {
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Low
 {0x03, 0x12,},
-{0x70, 0xbE,},	//Bit[0]=Low
+{0x70, 0x9E,},	//Bit[0]=Low
 
 {0x03, 0x00,},
 {0x1e, 0x01,}, // frame update
@@ -17333,7 +17332,7 @@ static struct msm_camera_i2c_reg_conf sr352_Capture_2048_1536[] ={
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Hi
 {0x03, 0x12,},
-{0x70, 0xbF,},	//Bit[0]=Hi
+{0x70, 0x9F,},	//Bit[0]=Hi
 
 //------------------------------------------------//
 //TAP Capture Setting
@@ -17447,7 +17446,7 @@ static struct msm_camera_i2c_reg_conf sr352_Capture_2048_1536_01[] ={
 {0x03, 0x11,},
 {0x10, 0x1F,},	//Bit[4]=Hi
 {0x03, 0x12,},
-{0x70, 0xbF,},	//Bit[0]=Hi
+{0x70, 0x9F,},	//Bit[0]=Hi
 
 //------------------------------------------------//
 //TAP Capture Setting
@@ -17685,7 +17684,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x01, 0x07,},
 {0x01, 0x01,},
 
-{0x05, 0x04,}, // ver1.13
+{0x05, 0x03,}, // ver1.03
 {0x0d, 0xaa,}, // ESD Check Register
 {0x0f, 0xaa,}, // ESD Check Register
 
@@ -17808,7 +17807,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 
 {0x03, 0x00,},
 {0x10, 0x00,},	// Full size
-{0x11, 0x83,},	// Fixed mode off
+{0x11, 0x83,},	// Fixed mode off // XY Flip
 {0x12, 0x00,},
 {0x13, 0x00,},
 {0x15, 0x01,},
@@ -17991,8 +17990,8 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 ///////////////////////////////////////////////////////////////////////////////
 {0x03, 0x0b,},
 {0x10, 0x01,}, // otp_dpc_ctl
-{0x11, 0x93,}, //Preview1 XY flip 1219
-{0x12, 0x82,}, //Preview1 XY flip 1219
+{0x11, 0x93,}, //HD(Crop) XY flip 1219
+{0x12, 0x82,}, //HD(Crop) XY flip 1219
 
 ///////////////////////////////////////////////////////////////////////////////
 // 15 Page (LSC)
@@ -19564,10 +19563,10 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x2c, 0x08,}, //middle_h_th
 {0x2d, 0x08,}, //middle_l_th
 {0x2e, 0x06,}, //dark_th
-{0x2f, 0x40,}, //20121127 _DPC TH
-{0x30, 0x40,}, //20121127 _DPC TH
-{0x31, 0x40,}, //20121127 _DPC TH
-{0x32, 0x40,}, //20121127 _DPC TH
+{0x2f, 0x10,}, //20121127 _DPC TH
+{0x30, 0x10,}, //20121127 _DPC TH
+{0x31, 0x10,}, //20121127 _DPC TH
+{0x32, 0x10,}, //20121127 _DPC TH
 {0x41, 0x88,}, //GBGR Cut off //46
 
 ///////////////////////////////////
@@ -19854,87 +19853,87 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x03, 0xC8,},
 {0x0e, 0x01,}, // burst start
 
-{0x10, 0xD2,},
+{0x10, 0xf6,},
 {0x11, 0xc3,},
-{0x12, 0xe4,},
+{0x12, 0xe0,},
 {0x13, 0x1a,}, //bCtl4
 {0x14, 0x9f,},
 {0x15, 0xc4,},
 {0x16, 0x00,},
-{0x17, 0x00,},
-{0x18, 0x11,},
-{0x19, 0x22,},
-{0x1a, 0x22,},
-{0x1b, 0x44,},
-{0x1c, 0x44,},
-{0x1d, 0x66,},
-{0x1e, 0x66,},
-{0x1f, 0x88,},
-{0x20, 0x88,},
+{0x17, 0x34,},
+{0x18, 0x55,},
+{0x19, 0x66,},
+{0x1a, 0x66,},
+{0x1b, 0x88,},
+{0x1c, 0x88,},
+{0x1d, 0x88,},
+{0x1e, 0x88,},
+{0x1f, 0xaa,},
+{0x20, 0xaa,},
 {0x21, 0x00,},
 {0x22, 0x01,},
-{0x23, 0x08,},
-{0x24, 0x00,},
+{0x23, 0x1e,},
+{0x24, 0xff,},
 {0x25, 0x1e,},
-{0x26, 0x30,}, //init awb speed
-{0x27, 0x6a,},
-{0x28, 0x80,},
-{0x29, 0x10,},
-{0x2a, 0x04,},
-{0x2b, 0x0a,},
+{0x26, 0x51,}, //init awb speed
+{0x27, 0xff,},
+{0x28, 0xf0,},
+{0x29, 0x01,},
+{0x2a, 0x00,},
+{0x2b, 0x1e,},
 {0x2c, 0x04,},
 {0x2d, 0x0c,},
 {0x2e, 0x1e,},
-{0x2f, 0x00,},//dwOutdoorCondInTh
-{0x30, 0x00,},//dwOutdoorCondInTh_n01
-{0x31, 0x21,},//dwOutdoorCondInTh_n02
-{0x32, 0x34,},//dwOutdoorCondInTh_n03
-{0x33, 0x00,},//dwOutdoorCondOutTh
-{0x34, 0x00,},//dwOutdoorCondOutTh_n01
-{0x35, 0x27,},//dwOutdoorCondOutTh_n02
-{0x36, 0x10,},//dwOutdoorCondOutTh_n03
-{0x37, 0x00,},//dwEvTh
-{0x38, 0x00,},//dwEvTh_n01
+{0x2f, 0x00,}, //dwOutdoorCondInTh
+{0x30, 0x00,}, //dwOutdoorCondInTh_n01
+{0x31, 0x21,}, //dwOutdoorCondInTh_n02
+{0x32, 0x34,}, //dwOutdoorCondInTh_n03
+{0x33, 0x00,}, //dwOutdoorCondOutTh
+{0x34, 0x00,}, //dwOutdoorCondOutTh_n01
+{0x35, 0x27,}, //dwOutdoorCondOutTh_n02
+{0x36, 0x10,}, //dwOutdoorCondOutTh_n03
+{0x37, 0x00,}, //dwEvTh
+{0x38, 0x00,}, //dwEvTh_n01
 {0x39, 0x04,},//dwEvTh_n02 //840fps
-{0x3a, 0x11,},//dwEvTh_n03
-{0x3b, 0x00,},//dwEvTh_a01
-{0x3c, 0x00,},//dwEvTh_a01_n01
+{0x3a, 0xa6,},//dwEvTh_n03
+{0x3b, 0x00,}, //dwEvTh_a01
+{0x3c, 0x00,}, //dwEvTh_a01_n01
 {0x3d, 0x08,},//dwEvTh_a01_n02
 {0x3e, 0x23,},//dwEvTh_a01_n03 //480fps
-{0x3f, 0x00,},//dwEvTh_a02
-{0x40, 0x00,},//dwEvTh_a02_n01
+{0x3f, 0x00,}, //dwEvTh_a02
+{0x40, 0x00,}, //dwEvTh_a02_n01
 {0x41, 0x20,},//dwEvTh_a02_n02
-{0x42, 0x8D,},//dwEvTh_a02_n03 //120fps
-{0x43, 0x00,},//dwEvTh_a03
-{0x44, 0x00,},//dwEvTh_a03_n01
-{0x45, 0x61,},//dwEvTh_a03_n02
+{0x42, 0x8d,},//dwEvTh_a02_n03 //120fps
+{0x43, 0x00,}, //dwEvTh_a03
+{0x44, 0x00,}, //dwEvTh_a03_n01
+{0x45, 0x61,}, //dwEvTh_a03_n02
 {0x46, 0xa8,},//dwEvTh_a03_n03 //40fps
-{0x47, 0x00,},//dwEvTh_a04
-{0x48, 0x04,},//dwEvTh_a04_n01
-{0x49, 0xc4,},//dwEvTh_a04_n02
-{0x4a, 0xb4,},//dwEvTh_a04_n03
-{0x4b, 0x00,},//dwEvTh_a05
-{0x4c, 0x0b,},//dwEvTh_a05_n01
-{0x4d, 0x71,},//dwEvTh_a05_n02
-{0x4e, 0xb0,},//dwEvTh_a05_n03
+{0x47, 0x00,}, //dwEvTh_a04
+{0x48, 0x04,}, //dwEvTh_a04_n01
+{0x49, 0xc4,}, //dwEvTh_a04_n02
+{0x4a, 0xb4,}, //dwEvTh_a04_n03
+{0x4b, 0x00,}, //dwEvTh_a05
+{0x4c, 0x0b,}, //dwEvTh_a05_n01
+{0x4d, 0x71,}, //dwEvTh_a05_n02
+{0x4e, 0xb0,}, //dwEvTh_a05_n03
 {0x4f, 0x96,},//aAglMaxMinLmt
-{0x50, 0x4a,},//aAglMaxMinLmt_a01
+{0x50, 0x58,},//aAglMaxMinLmt_a01
 {0x51, 0x9C,},//aAglMaxMinLmt_a02
 {0x52, 0x60,}, //aAglMaxMinLmt_a03
-{0x53, 0xa0,},//aAglMaxMinLmt_a04
-{0x54, 0x20,},//aAglMaxMinLmt_a05
-{0x55, 0xa0,},//aAglMaxMinLmt_a06
-{0x56, 0x32,},//aAglMaxMinLmt_a07            13.05.21 Night shot awb issue h38->h32
-{0x57, 0x78,},//aTgtWhtRgnBgMaxMinLmt
-{0x58, 0x56,},//aTgtWhtRgnBgMaxMinLmt_a01
-{0x59, 0x81,},//aTgtWhtRgnBgMaxMinLmt_a02
-{0x5a, 0x51,},//aTgtWhtRgnBgMaxMinLmt_a03
-{0x5b, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a04
-{0x5c, 0x20,},//aTgtWhtRgnBgMaxMinLmt_a05
-{0x5d, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a06
-{0x5e, 0x32,},//aTgtWhtRgnBgMaxMinLmt_a07   13.05.21 Night shot awb issue h42->h32
+{0x53, 0xa0,}, //aAglMaxMinLmt_a04
+{0x54, 0x20,}, //aAglMaxMinLmt_a05
+{0x55, 0xa0,}, //aAglMaxMinLmt_a06
+{0x56, 0x38,},//aAglMaxMinLmt_a07
+{0x57, 0x70,},//aTgtWhtRgnBgMaxMinLmt      out2 max
+{0x58, 0x5e,},//aTgtWhtRgnBgMaxMinLmt_a01  out2 min
+{0x59, 0x74,},//aTgtWhtRgnBgMaxMinLmt_a02  out1 max
+{0x5a, 0x5c,},//aTgtWhtRgnBgMaxMinLmt_a03  out1 min
+{0x5b, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a04  in max
+{0x5c, 0x20,},//aTgtWhtRgnBgMaxMinLmt_a05  in min
+{0x5d, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a06  dark max
+{0x5e, 0x42,},//aTgtWhtRgnBgMaxMinLmt_a07  dark min
 
-{0x5f, 0x10,},//bTgtWhtRgnBgStep
+{0x5f, 0x10,}, //bTgtWhtRgnBgStep
 {0x60, 0x0a,},//BpOption distance weight  def : 0a -> 04 -> 02
 
 {0x61, 0x1e,},
@@ -19989,7 +19988,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x92, 0x00,},
 
 {0x93, 0x00,}, //Indoor_wRgIntOfs
-{0x94, 0xc0,},//Indoor_wRgIntOfs_n01
+{0x94, 0xc0,}, //Indoor_wRgIntOfs_n01
 {0x95, 0x00,}, //Indoor_wBgIntOfs
 {0x96, 0xc0,}, //Indoor_wBgIntOfs_n01
 {0x97, 0x10,}, //Indoor_bRgStep
@@ -20012,12 +20011,12 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0xa8, 0x60,},//Indoor_aTgtWhtRgnRgLtLmt_a04
 {0xa9, 0x56,},//Indoor_aTgtWhtRgnRgLtLmt_a05
 {0xaa, 0x4c,},//Indoor_aTgtWhtRgnRgLtLmt_a06
-{0xab, 0x45,},//Indoor_aTgtWhtRgnRgLtLmt_a07
-{0xac, 0x40,},//Indoor_aTgtWhtRgnRgLtLmt_a08
-{0xad, 0x3c,},//Indoor_aTgtWhtRgnRgLtLmt_a09
+{0xab, 0x45,}, //Indoor_aTgtWhtRgnRgLtLmt_a07
+{0xac, 0x40,}, //Indoor_aTgtWhtRgnRgLtLmt_a08
+{0xad, 0x3c,}, //Indoor_aTgtWhtRgnRgLtLmt_a09
 {0xae, 0x39,},//Indoor_aTgtWhtRgnRgLtLmt_a10
-{0xaf, 0xaa,},//Indoor_aTgtWhtRgnRgRtLmt
-{0xb0, 0xa9,},//Indoor_aTgtWhtRgnRgRtLmt_a01
+{0xaf, 0xaa,}, //Indoor_aTgtWhtRgnRgRtLmt
+{0xb0, 0xa9,}, //Indoor_aTgtWhtRgnRgRtLmt_a01
 {0xb1, 0xa8,},//Indoor_aTgtWhtRgnRgRtLmt_a02
 {0xb2, 0xa2,},//Indoor_aTgtWhtRgnRgRtLmt_a03
 {0xb3, 0x95,},//Indoor_aTgtWhtRgnRgRtLmt_a04
@@ -20046,9 +20045,9 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0xca, 0x50,},//Indoor_aOptWhtRgnRgLtLmt_a05
 {0xcb, 0x46,},//Indoor_aOptWhtRgnRgLtLmt_a06
 {0xcc, 0x40,},//Indoor_aOptWhtRgnRgLtLmt_a07
-{0xcd, 0x39,},//Indoor_aOptWhtRgnRgLtLmt_a08
-{0xce, 0x35,},//Indoor_aOptWhtRgnRgLtLmt_a09
-{0xcf, 0x33,},//Indoor_aOptWhtRgnRgLtLmt_a10
+{0xcd, 0x39,}, //Indoor_aOptWhtRgnRgLtLmt_a08
+{0xce, 0x35,}, //Indoor_aOptWhtRgnRgLtLmt_a09
+{0xcf, 0x33,}, //Indoor_aOptWhtRgnRgLtLmt_a10
 {0xd0, 0xba,},//Indoor_aOptWhtRgnRgRtLmt
 {0xd1, 0xb9,},//Indoor_aOptWhtRgnRgRtLmt_a01
 {0xd2, 0xb8,},//Indoor_aOptWhtRgnRgRtLmt_a02
@@ -20071,11 +20070,11 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0xe2, 0x27,}, //Indoor_aCtmpWgtHgtTh
 {0xe3, 0x32,}, //Indoor_aCtmpWgtHgtTh_a01
 {0xe4, 0x3c,}, //Indoor_aCtmpWgtHgtTh_a02
-{0xe5, 0x48,}, //Indoor_aCtmpWgtHgtTh_a03
-{0xe6, 0x5c,}, //Indoor_aCtmpWgtHgtTh_a04
-{0xe7, 0x70,}, //Indoor_aCtmpWgtHgtTh_a05
-{0xe8, 0x7c,}, //Indoor_aCtmpWgtHgtTh_a06
-{0xe9, 0x86,}, //Indoor_aCtmpWgtHgtTh_a07
+{0xe5, 0x48,},//Indoor_aCtmpWgtHgtTh_a03
+{0xe6, 0x5c,},//Indoor_aCtmpWgtHgtTh_a04
+{0xe7, 0x70,},//Indoor_aCtmpWgtHgtTh_a05
+{0xe8, 0x7c,},//Indoor_aCtmpWgtHgtTh_a06
+{0xe9, 0x86,},//Indoor_aCtmpWgtHgtTh_a07
 {0xea, 0x90,}, //Indoor_aCtmpWgtHgtTh_a08
 {0xeb, 0x11,}, //Indoor_aCtmpWgt
 {0xec, 0x11,}, //Indoor_aCtmpWgt_a01
@@ -20125,26 +20124,24 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x24, 0x32,},//Indoor_aYlvlWgt_a14
 {0x25, 0x21,},//Indoor_aYlvlWgt_a15
 
-{0x26, 0x34,},//Indoor_aTgtAngle
-{0x27, 0x3e,},//Indoor_aTgtAngle_a01
-{0x28, 0x41,},//Indoor_aTgtAngle_a02
-{0x29, 0x4e,},//Indoor_aTgtAngle_a03
-{0x2a, 0x72,},//Indoor_aTgtAngle_a04
+{0x26, 0x34,}, //Indoor_aTgtAngle
+{0x27, 0x3e,}, //Indoor_aTgtAngle_a01
+{0x28, 0x41,}, //Indoor_aTgtAngle_a02
+{0x29, 0x4e,}, //Indoor_aTgtAngle_a03
+{0x2a, 0x72,}, //Indoor_aTgtAngle_a04
+{0x2b, 0x10,}, //Indoor_aRgTgtOfs
+{0x2c, 0x10,}, //Indoor_aRgTgtOfs_a01
+{0x2d, 0x8e,}, //Indoor_aRgTgtOfs_a02
+{0x2e, 0x84,}, //Indoor_aRgTgtOfs_a03
+{0x2f, 0x86,}, //Indoor_aRgTgtOfs_a04
+{0x30, 0xc6,}, //Indoor_aBgTgtOfs
+{0x31, 0xc6,}, //Indoor_aBgTgtOfs_a01
+{0x32, 0xb1,}, //Indoor_aBgTgtOfs_a02
+{0x33, 0x8a,}, //Indoor_aBgTgtOfs_a03
+{0x34, 0x84,}, //Indoor_aBgTgtOfs_a04 h88->h00  13.5.29 choi
 
-{0x2b, 0x10,},//Indoor_aRgTgtOfs
-{0x2c, 0x10,},//Indoor_aRgTgtOfs_a01
-{0x2d, 0x8e,},//Indoor_aRgTgtOfs_a02
-{0x2e, 0x84,},//Indoor_aRgTgtOfs_a03
-{0x2f, 0x86,},//Indoor_aRgTgtOfs_a04
-
-{0x30, 0xc6,},//Indoor_aBgTgtOfs
-{0x31, 0xc6,},//Indoor_aBgTgtOfs_a01
-{0x32, 0xb1,},//Indoor_aBgTgtOfs_a02
-{0x33, 0x8a,},//Indoor_aBgTgtOfs_a03
-{0x34, 0x84,},//Indoor_aBgTgtOfs_a04 h88->h00  13.5.29 choi
-
-{0x35, 0x24,},//bRgDefTgt //indoor
-{0x36, 0x00,},//bBgDefTgt //indoor
+{0x35, 0x24,}, //bRgDefTgt //indoor
+{0x36, 0x00,}, //bBgDefTgt //indoor
 
 {0x37, 0x20,},//Indoor_aWhtPtTrcAglOfs
 {0x38, 0x1e,},//Indoor_aWhtPtTrcAglOfs_a01
@@ -20223,7 +20220,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x80, 0x00,}, //Indoor_aRatioBox_a39
 
 {0x81, 0x00,}, //Outdoor_wRgIntOfs
-{0x82, 0x08,}, //Outdoor_wRgIntOfs_n01    h40->h20  13.5.27  LSC update shift
+{0x82, 0x08,},//Outdoor_wRgIntOfs_n01
 {0x83, 0x01,}, //Outdoor_wBgIntOfs
 {0x84, 0x00,}, //Outdoor_wBgIntOfs_n01
 {0x85, 0x10,}, //Outdoor_bRgStep
@@ -20243,13 +20240,13 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x93, 0x57,}, //Outdoor_aTgtWhtRgnRgLtLmt_a01
 {0x94, 0x51,}, //Outdoor_aTgtWhtRgnRgLtLmt_a02
 {0x95, 0x50,}, //Outdoor_aTgtWhtRgnRgLtLmt_a03
-{0x96, 0x4e,}, //Outdoor_aTgtWhtRgnRgLtLmt_a04
-{0x97, 0x4c,}, //Outdoor_aTgtWhtRgnRgLtLmt_a05
-{0x98, 0x4b,}, //Outdoor_aTgtWhtRgnRgLtLmt_a06
-{0x99, 0x49,}, //Outdoor_aTgtWhtRgnRgLtLmt_a07
+{0x96, 0x4e,},//Outdoor_aTgtWhtRgnRgLtLmt_a04
+{0x97, 0x4c,},//Outdoor_aTgtWhtRgnRgLtLmt_a05
+{0x98, 0x4b,},//Outdoor_aTgtWhtRgnRgLtLmt_a06
+{0x99, 0x49,},//Outdoor_aTgtWhtRgnRgLtLmt_a07
 {0x9a, 0x47,}, //Outdoor_aTgtWhtRgnRgLtLmt_a08
-{0x9b, 0x46,}, //Outdoor_aTgtWhtRgnRgLtLmt_a09
-{0x9c, 0x45,}, //Outdoor_aTgtWhtRgnRgLtLmt_a10
+{0x9b, 0x46,},//Outdoor_aTgtWhtRgnRgLtLmt_a09
+{0x9c, 0x45,},//Outdoor_aTgtWhtRgnRgLtLmt_a10
 {0x9d, 0x64,}, //Outdoor_aTgtWhtRgnRgRtLmt
 {0x9e, 0x63,}, //Outdoor_aTgtWhtRgnRgRtLmt_a01
 {0x9f, 0x62,}, //Outdoor_aTgtWhtRgnRgRtLmt_a02
@@ -20257,10 +20254,10 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0xa1, 0x61,}, //Outdoor_aTgtWhtRgnRgRtLmt_a04
 {0xa2, 0x60,}, //Outdoor_aTgtWhtRgnRgRtLmt_a05
 {0xa3, 0x5e,}, //Outdoor_aTgtWhtRgnRgRtLmt_a06
-{0xa4, 0x5d,}, //Outdoor_aTgtWhtRgnRgRtLmt_a07
-{0xa5, 0x5c,}, //Outdoor_aTgtWhtRgnRgRtLmt_a08
+{0xa4, 0x5d,},//Outdoor_aTgtWhtRgnRgRtLmt_a07
+{0xa5, 0x5c,},//Outdoor_aTgtWhtRgnRgRtLmt_a08
 {0xa6, 0x5a,}, //Outdoor_aTgtWhtRgnRgRtLmt_a09
-{0xa7, 0x57,}, //Outdoor_aTgtWhtRgnRgRtLmt_a10
+{0xa7, 0x57,},//Outdoor_aTgtWhtRgnRgRtLmt_a10
 {0xa8, 0x40,}, //Outdoor_aOptWhtRgnBg
 {0xa9, 0x45,}, //Outdoor_aOptWhtRgnBg_a01
 {0xaa, 0x4b,}, //Outdoor_aOptWhtRgnBg_a02
@@ -20296,12 +20293,12 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0xc8, 0x4a,}, //Outdoor_aOptWhtRgnRgRtLmt_a10
 
 {0xc9, 0x42,}, //Outdoor_aCtmpWgtWdhTh
-{0xca, 0x4c,}, //Outdoor_aCtmpWgtWdhTh_a01
-{0xcb, 0x54,}, //Outdoor_aCtmpWgtWdhTh_a02
-{0xcc, 0x5c,}, //Outdoor_aCtmpWgtWdhTh_a03
-{0xcd, 0x64,}, //Outdoor_aCtmpWgtWdhTh_a04
-{0xce, 0x6c,}, //Outdoor_aCtmpWgtWdhTh_a05
-{0xcf, 0x74,}, //Outdoor_aCtmpWgtWdhTh_a06
+{0xca, 0x4c,},//Outdoor_aCtmpWgtWdhTh_a01
+{0xcb, 0x54,},//Outdoor_aCtmpWgtWdhTh_a02
+{0xcc, 0x5c,},//Outdoor_aCtmpWgtWdhTh_a03
+{0xcd, 0x64,},//Outdoor_aCtmpWgtWdhTh_a04
+{0xce, 0x6c,},//Outdoor_aCtmpWgtWdhTh_a05
+{0xcf, 0x74,},//Outdoor_aCtmpWgtWdhTh_a06
 {0xd0, 0x42,}, //Outdoor_aCtmpWgtHgtTh
 {0xd1, 0x52,}, //Outdoor_aCtmpWgtHgtTh_a01
 {0xd2, 0x58,}, //Outdoor_aCtmpWgtHgtTh_a02
@@ -20312,28 +20309,28 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0xd7, 0x7a,}, //Outdoor_aCtmpWgtHgtTh_a07
 {0xd8, 0x88,}, //Outdoor_aCtmpWgtHgtTh_a08
 {0xd9, 0x11,}, //Outdoor_aCtmpWgt
-{0xda, 0x23,}, //Outdoor_aCtmpWgt_a01
-{0xdb, 0x22,}, //Outdoor_aCtmpWgt_a02
+{0xda, 0x23,},//Outdoor_aCtmpWgt_a01
+{0xdb, 0x22,},//Outdoor_aCtmpWgt_a02
 {0xdc, 0x11,}, //Outdoor_aCtmpWgt_a03
-{0xdd, 0x22,}, //Outdoor_aCtmpWgt_a04
+{0xdd, 0x22,},//Outdoor_aCtmpWgt_a04
 {0xde, 0x22,}, //Outdoor_aCtmpWgt_a05
 {0xdf, 0x11,}, //Outdoor_aCtmpWgt_a06
 {0xe0, 0x33,}, //Outdoor_aCtmpWgt_a07
-{0xe1, 0x31,}, //Outdoor_aCtmpWgt_a08
+{0xe1, 0x31,},//Outdoor_aCtmpWgt_a08
 {0xe2, 0x12,}, //Outdoor_aCtmpWgt_a09
-{0xe3, 0x66,}, //Outdoor_aCtmpWgt_a10
-{0xe4, 0x41,}, //Outdoor_aCtmpWgt_a11
+{0xe3, 0x66,},//Outdoor_aCtmpWgt_a10
+{0xe4, 0x41,},//Outdoor_aCtmpWgt_a11
 {0xe5, 0x13,}, //Outdoor_aCtmpWgt_a12
-{0xe6, 0x77,}, //Outdoor_aCtmpWgt_a13
-{0xe7, 0x41,}, //Outdoor_aCtmpWgt_a14
-{0xe8, 0x13,}, //Outdoor_aCtmpWgt_a15
+{0xe6, 0x77,},//Outdoor_aCtmpWgt_a13
+{0xe7, 0x41,},//Outdoor_aCtmpWgt_a14
+{0xe8, 0x13,},//Outdoor_aCtmpWgt_a15
 {0xe9, 0x74,}, //Outdoor_aCtmpWgt_a16
 {0xea, 0x11,}, //Outdoor_aCtmpWgt_a17
-{0xeb, 0x23,}, //Outdoor_aCtmpWgt_a18
-{0xec, 0x53,}, //Outdoor_aCtmpWgt_a19
+{0xeb, 0x23,},//Outdoor_aCtmpWgt_a18
+{0xec, 0x53,},//Outdoor_aCtmpWgt_a19
 {0xed, 0x11,}, //Outdoor_aCtmpWgt_a20
-{0xee, 0x43,}, //Outdoor_aCtmpWgt_a21
-{0xef, 0x31,}, //Outdoor_aCtmpWgt_a22
+{0xee, 0x43,},//Outdoor_aCtmpWgt_a21
+{0xef, 0x31,},//Outdoor_aCtmpWgt_a22
 {0xf0, 0x11,}, //Outdoor_aCtmpWgt_a23
 {0xf1, 0x11,}, //Outdoor_aCtmpWgt_a24
 
@@ -20341,7 +20338,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0xf3, 0x34,}, //aYlvlWgt_a01
 {0xf4, 0x43,}, //aYlvlWgt_a02
 {0xf5, 0x32,}, //aYlvlWgt_a03
-{0xf6, 0x22,}, //aYlvlWgt_a04
+{0xf6, 0x11,},//aYlvlWgt_a04
 {0xf7, 0x11,}, //aYlvlWgt_a05
 {0xf8, 0x11,}, //aYlvlWgt_a06
 {0xf9, 0x11,}, //aYlvlWgt_a07
@@ -20360,25 +20357,23 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x12, 0x22,}, //aYlvlWgt_a14
 {0x13, 0x11,}, //aYlvlWgt_a15
 
-{0x14, 0x64,},//Outdoor_aTgtAngle
-{0x15, 0x6b,},//Outdoor_aTgtAngle_a01
-{0x16, 0x72,},//Outdoor_aTgtAngle_a02
-{0x17, 0x7a,},//Outdoor_aTgtAngle_a03
-{0x18, 0x84,},//Outdoor_aTgtAngle_a04
-{0x19, 0x16,},//Outdoor_aRgTgtOfs
-{0x1a, 0x0e,},//Outdoor_aRgTgtOfs_a01
-{0x1b, 0x82,},//Outdoor_aRgTgtOfs_a02
-{0x1c, 0x88,},//Outdoor_aRgTgtOfs_a03
-{0x1d, 0x88,},//Outdoor_aRgTgtOfs_a04
-
-{0x1e, 0x9e,},//Outdoor_aBgTgtOfs
-{0x1f, 0x8b,},//Outdoor_aBgTgtOfs_a01
-{0x20, 0x89,},//Outdoor_aBgTgtOfs_a02
-{0x21, 0x87,},//Outdoor_aBgTgtOfs_a03
-{0x22, 0x84,},//Outdoor_aBgTgtOfs_a04
-
-{0x23, 0x92,},//Outdoor_bRgDefTgt
-{0x24, 0x8d,},//Outdoor_bBgDefTgt
+{0x14, 0x64,}, //Outdoor_aTgtAngle
+{0x15, 0x6b,}, //Outdoor_aTgtAngle_a01
+{0x16, 0x72,}, //Outdoor_aTgtAngle_a02
+{0x17, 0x7a,}, //Outdoor_aTgtAngle_a03
+{0x18, 0x84,}, //Outdoor_aTgtAngle_a04
+{0x19, 0x16,}, //Outdoor_aRgTgtOfs
+{0x1a, 0x0e,}, //Outdoor_aRgTgtOfs_a01
+{0x1b, 0x82,}, //Outdoor_aRgTgtOfs_a02
+{0x1c, 0x88,}, //Outdoor_aRgTgtOfs_a03
+{0x1d, 0x88,}, //Outdoor_aRgTgtOfs_a04
+{0x1e, 0x9e,}, //Outdoor_aBgTgtOfs
+{0x1f, 0x8b,}, //Outdoor_aBgTgtOfs_a01
+{0x20, 0x89,}, //Outdoor_aBgTgtOfs_a02
+{0x21, 0x87,}, //Outdoor_aBgTgtOfs_a03
+{0x22, 0x84,}, //Outdoor_aBgTgtOfs_a04
+{0x23, 0x92,}, //Outdoor_bRgDefTgt
+{0x24, 0x8d,}, //Outdoor_bBgDefTgt
 
 {0x25, 0x1c,}, //Outdoor_aWhtPtTrcAglOfs
 {0x26, 0x1a,}, //Outdoor_aWhtPtTrcAglOfs_a01
@@ -20400,8 +20395,8 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x36, 0x0a,}, //Outdoor_bWgtOfsTh1
 {0x37, 0xa0,}, //Outdoor_bWgtOfsTh2
 
-{0x38, 0x6d,},//Outdoor_bWhtPtCorAglMin
-{0x39, 0x78,},//Outdoor_bWhtPtCorAglMax
+{0x38, 0x6d,}, //Outdoor_bWhtPtCorAglMin
+{0x39, 0x78,}, //Outdoor_bWhtPtCorAglMax
 
 {0x3a, 0x04,}, //Outdoor_bYlvlMin
 {0x3b, 0xf8,}, //Outdoor_bYlvlMax
@@ -20416,105 +20411,109 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x44, 0xc0,},
 {0x45, 0x07,},
 {0x46, 0xc0,},
-{0x47, 0x02,},//Outdoor_aRatioBox
-{0x48, 0xb2,},//Outdoor_aRatioBox_a01
-{0x49, 0x05,},//Outdoor_aRatioBox_a02
-{0x4a, 0xdc,},//Outdoor_aRatioBox_a03
-{0x4b, 0x0a,},//Outdoor_aRatioBox_a04
-{0x4c, 0x28,},//Outdoor_aRatioBox_a05
-{0x4d, 0x0c,},//Outdoor_aRatioBox_a06
-{0x4e, 0x1c,},//Outdoor_aRatioBox_a07
-{0x4f, 0x02,},//Outdoor_aRatioBox_a08
-{0x50, 0xee,},//Outdoor_aRatioBox_a09
-{0x51, 0x06,},//Outdoor_aRatioBox_a10
-{0x52, 0x72,},//Outdoor_aRatioBox_a11
-{0x53, 0x08,},//Outdoor_aRatioBox_a12
-{0x54, 0x98,},//Outdoor_aRatioBox_a13
-{0x55, 0x0a,},//Outdoor_aRatioBox_a14
-{0x56, 0xf0,},//Outdoor_aRatioBox_a15
-{0x57, 0x03,},//Outdoor_aRatioBox_a16
-{0x58, 0x20,},//Outdoor_aRatioBox_a17
-{0x59, 0x07,},//Outdoor_aRatioBox_a18
-{0x5a, 0x08,},//Outdoor_aRatioBox_a19
-{0x5b, 0x07,},//Outdoor_aRatioBox_a20
-{0x5c, 0x6c,},//Outdoor_aRatioBox_a21
-{0x5d, 0x09,},//Outdoor_aRatioBox_a22
-{0x5e, 0x60,},//Outdoor_aRatioBox_a23
-{0x5f, 0x03,},//Outdoor_aRatioBox_a24
-{0x60, 0x84,},//Outdoor_aRatioBox_a25
-{0x61, 0x07,},//Outdoor_aRatioBox_a26
-{0x62, 0xd0,},//Outdoor_aRatioBox_a27
-{0x63, 0x06,},//Outdoor_aRatioBox_a28
-{0x64, 0x40,},//Outdoor_aRatioBox_a29
-{0x65, 0x08,},//Outdoor_aRatioBox_a30
-{0x66, 0x34,},//Outdoor_aRatioBox_a31
-{0x67, 0x03,},//Outdoor_aRatioBox_a32
-{0x68, 0xe8,},//Outdoor_aRatioBox_a33
-{0x69, 0x08,},//Outdoor_aRatioBox_a34
-{0x6a, 0xd0,},//Outdoor_aRatioBox_a35
-{0x6b, 0x04,},//Outdoor_aRatioBox_a36
-{0x6c, 0x4c,},//Outdoor_aRatioBox_a37
-{0x6d, 0x07,},//Outdoor_aRatioBox_a38
-{0x6e, 0x08,},//Outdoor_aRatioBox_a39
+{0x47, 0x02,}, //Outdoor_aRatioBox
+{0x48, 0xb2,}, //Outdoor_aRatioBox_a01
+{0x49, 0x05,}, //Outdoor_aRatioBox_a02
+{0x4a, 0xdc,}, //Outdoor_aRatioBox_a03
+{0x4b, 0x0a,}, //Outdoor_aRatioBox_a04
+{0x4c, 0x28,}, //Outdoor_aRatioBox_a05
+{0x4d, 0x0c,}, //Outdoor_aRatioBox_a06
+{0x4e, 0x1c,}, //Outdoor_aRatioBox_a07
+{0x4f, 0x02,}, //Outdoor_aRatioBox_a08
+{0x50, 0xee,}, //Outdoor_aRatioBox_a09
+{0x51, 0x06,}, //Outdoor_aRatioBox_a10
+{0x52, 0x72,}, //Outdoor_aRatioBox_a11
+{0x53, 0x08,}, //Outdoor_aRatioBox_a12
+{0x54, 0x98,}, //Outdoor_aRatioBox_a13
+{0x55, 0x0a,}, //Outdoor_aRatioBox_a14
+{0x56, 0xf0,}, //Outdoor_aRatioBox_a15
+{0x57, 0x03,}, //Outdoor_aRatioBox_a16
+{0x58, 0x20,}, //Outdoor_aRatioBox_a17
+{0x59, 0x07,}, //Outdoor_aRatioBox_a18
+{0x5a, 0x08,}, //Outdoor_aRatioBox_a19
+{0x5b, 0x07,}, //Outdoor_aRatioBox_a20
+{0x5c, 0x6c,}, //Outdoor_aRatioBox_a21
+{0x5d, 0x09,}, //Outdoor_aRatioBox_a22
+{0x5e, 0x60,}, //Outdoor_aRatioBox_a23
+{0x5f, 0x03,}, //Outdoor_aRatioBox_a24
+{0x60, 0x84,}, //Outdoor_aRatioBox_a25
+{0x61, 0x07,}, //Outdoor_aRatioBox_a26
+{0x62, 0xd0,}, //Outdoor_aRatioBox_a27
+{0x63, 0x06,}, //Outdoor_aRatioBox_a28
+{0x64, 0x40,}, //Outdoor_aRatioBox_a29
+{0x65, 0x08,}, //Outdoor_aRatioBox_a30
+{0x66, 0x34,}, //Outdoor_aRatioBox_a31
+{0x67, 0x03,}, //Outdoor_aRatioBox_a32
+{0x68, 0xe8,}, //Outdoor_aRatioBox_a33
+{0x69, 0x08,}, //Outdoor_aRatioBox_a34
+{0x6a, 0xd0,}, //Outdoor_aRatioBox_a35
+{0x6b, 0x04,}, //Outdoor_aRatioBox_a36
+{0x6c, 0x4c,}, //Outdoor_aRatioBox_a37
+{0x6d, 0x07,}, //Outdoor_aRatioBox_a38
+{0x6e, 0x08,}, //Outdoor_aRatioBox_a39
 
 {0x6f, 0x04,},
 {0x70, 0x00,},
 
-{0x71, 0x05,},//Out2_Adt_RgainMin
-{0x72, 0x00,},//Out2_Adt_RgainMin_n01
+{0x71, 0x05,}, //Out2_Adt_RgainMin
+{0x72, 0x00,}, //Out2_Adt_RgainMin_n01
 {0x73, 0x05,}, //Out2_Adt_RgainMax
-{0x74, 0xe0,},//Out2_Adt_RgainMax_n01
-{0x75, 0x04,},//Out2_Adt_GgainMin
-{0x76, 0x00,},//Out2_Adt_GgainMin_n01
-{0x77, 0x04,},//Out2_Adt_GgainMax
-{0x78, 0x00,},//Out2_Adt_GgainMax_n01
+{0x74, 0xc0,},//Out2_Adt_RgainMax_n01
+{0x75, 0x04,}, //Out2_Adt_GgainMin
+{0x76, 0x00,}, //Out2_Adt_GgainMin_n01
+{0x77, 0x04,}, //Out2_Adt_GgainMax
+{0x78, 0x00,}, //Out2_Adt_GgainMax_n01
 {0x79, 0x05,}, //Out2_Adt_BgainMin
 {0x7a, 0xe0,}, //Out2_Adt_BgainMin_n01
-{0x7b, 0x07,},//Out2_Adt_BgainMax
-{0x7c, 0x00,},//Out2_Adt_BgainMax_n01
+{0x7b, 0x06,}, //Out2_Adt_BgainMax
+{0x7c, 0xa0,}, //Out2_Adt_BgainMax_n01
 
-{0x7d, 0x05,},//Out1_Adt_RgainMin
+{0x7d, 0x05,}, //Out1_Adt_RgainMin
 {0x7e, 0x40,},//Out1_Adt_RgainMin_n01
-{0x7f, 0x06,},//Out1_Adt_RgainMax
-{0x80, 0x80,}, //Out1_Adt_RgainMax_n01
-{0x81, 0x04,},//Out1_Adt_GgainMin
-{0x82, 0x00,},//Out1_Adt_GgainMin_n01
-{0x83, 0x04,},//Out1_Adt_GgainMax
-{0x84, 0x00,},//Out1_Adt_GgainMax_n01
-{0x85, 0x05,},//Out1_Adt_BgainMin
-{0x86, 0x80,},//Out1_Adt_BgainMin_n01
-{0x87, 0x07,},//Out1_Adt_BgainMax
-{0x88, 0xe0,}, //Out1_Adt_BgainMax_n01
+{0x7f, 0x06,}, //Out1_Adt_RgainMax
+{0x80, 0x40,},//Out1_Adt_RgainMax_n01
+{0x81, 0x04,}, //Out1_Adt_GgainMin
+{0x82, 0x00,}, //Out1_Adt_GgainMin_n01
+{0x83, 0x04,}, //Out1_Adt_GgainMax
+{0x84, 0x00,}, //Out1_Adt_GgainMax_n01
+{0x85, 0x05,}, //Out1_Adt_BgainMin
+{0x86, 0x80,}, //Out1_Adt_BgainMin_n01
+{0x87, 0x07,}, //Out1_Adt_BgainMax
+{0x88, 0x00,}, //Out1_Adt_BgainMax_n01
 
-{0x89, 0x04,},//In_Adt_RgainMin
-{0x8a, 0x00,},//In_Adt_RgainMin_n01
-{0x8b, 0x0d,},//In_Adt_RgainMax
-{0x8c, 0x00,},//In_Adt_RgainMax_n01
-{0x8d, 0x04,},//In_Adt_GgainMin
-{0x8e, 0x00,},//In_Adt_GgainMin_n01
-{0x8f, 0x05,},//In_Adt_GgainMax
+{0x89, 0x04,}, //In_Adt_RgainMin
+{0x8a, 0x00,}, //In_Adt_RgainMin_n01
+{0x8b, 0x0d,}, //In_Adt_RgainMax
+{0x8c, 0x00,}, //In_Adt_RgainMax_n01
+{0x8d, 0x04,}, //In_Adt_GgainMin
+{0x8e, 0x00,}, //In_Adt_GgainMin_n01
+{0x8f, 0x05,}, //In_Adt_GgainMax
 {0x90, 0x80,}, //In_Adt_GgainMax_n01
-{0x91, 0x04,},//In_Adt_BgainMin
-{0x92, 0x00,},//In_Adt_BgainMin_n01
-{0x93, 0x0d,},//In_Adt_BgainMax
-{0x94, 0x80,},//In_Adt_BgainMax_n01
+{0x91, 0x04,}, //In_Adt_BgainMin
+{0x92, 0x00,}, //In_Adt_BgainMin_n01
+{0x93, 0x0d,}, //In_Adt_BgainMax
+{0x94, 0x80,}, //In_Adt_BgainMax_n01
 
-{0x95, 0x04,},//Manual_Adt_RgainMin
-{0x96, 0x00,},//Manual_Adt_RgainMin_n01
-{0x97, 0x0d,},//Manual_Adt_RgainMax
-{0x98, 0x00,},//Manual_Adt_RgainMax_n01
-{0x99, 0x04,},//Manual_Adt_GgainMin
-{0x9a, 0x00,},//Manual_Adt_GgainMin_n01
+{0x95, 0x04,}, //Manual_Adt_RgainMin
+{0x96, 0x00,}, //Manual_Adt_RgainMin_n01
+{0x97, 0x0d,}, //Manual_Adt_RgainMax
+{0x98, 0x00,}, //Manual_Adt_RgainMax_n01
+{0x99, 0x04,}, //Manual_Adt_GgainMin
+{0x9a, 0x00,}, //Manual_Adt_GgainMin_n01
 {0x9b, 0x04,}, //Manual_Adt_GgainMax
 {0x9c, 0x80,}, //Manual_Adt_GgainMax_n01
-{0x9d, 0x04,},//Manual_Adt_BgainMin
-{0x9e, 0x00,},//Manual_Adt_BgainMin_n01
-{0x9f, 0x0b,},//Manual_Adt_BgainMax
-{0xa0, 0x00,},//Manual_Adt_BgainMax_n01
+{0x9d, 0x04,}, //Manual_Adt_BgainMin
+{0x9e, 0x00,}, //Manual_Adt_BgainMin_n01
+{0x9f, 0x0b,}, //Manual_Adt_BgainMax
+{0xa0, 0x00,}, //Manual_Adt_BgainMax_n01
 
 {0x0e, 0x00,}, //burst end
 
-{0x03, 0xC8,},
+{0x03, 0xc8,},
+{0x17, 0x00,}, //AWB Speed
+{0x18, 0x11,},
+{0x21, 0x00,},
+{0x22, 0x01,},
 {0x11, 0xC3,},	//AWB reset
 
 
@@ -20750,75 +20749,75 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x9d, 0x85,},	// BLC_ofs_gr_Dark2
 {0x9e, 0x85,},	// BLC_ofs_gb_Dark2
 
-{0x9f, 0x00,},//LSC Out_L ofs G
-{0xa0, 0x00,},//LSC Out_L ofs B
-{0xa1, 0x00,},//LSC Out_L ofs R
-{0xa2, 0x80,},//LSC Out_L Gain G
-{0xa3, 0x82,},//LSC Out_L Gain B
-{0xa4, 0x88,},//LSC Out_L Gain R
+{0x9f, 0x00,},	//LSC Out_L ofs G
+{0xa0, 0x00,},	//LSC Out_L ofs B
+{0xa1, 0x00,},	//LSC Out_L ofs R
+{0xa2, 0x80,},	//LSC Out_L Gain G
+{0xa3, 0x82,},	//LSC Out_L Gain B
+{0xa4, 0x84,},//LSC Out_L Gain R
 
-{0xa5, 0x00,},//LSC Out_M ofs G
-{0xa6, 0x00,},//LSC Out_M ofs B
-{0xa7, 0x00,},//LSC Out_M ofs R
-{0xa8, 0x80,},//LSC Out_M Gain G
-{0xa9, 0x84,},//LSC Out_M Gain B
-{0xaa, 0x85,},//LSC Out_M Gain R
+{0xa5, 0x00,},	//LSC Out_M ofs G
+{0xa6, 0x00,},	//LSC Out_M ofs B
+{0xa7, 0x00,},	//LSC Out_M ofs R
+{0xa8, 0x80,},	//LSC Out_M Gain G
+{0xa9, 0x82,},//LSC Out_M Gain B
+{0xaa, 0x7e,},	//LSC Out_M Gain R
 
-{0xab, 0x00,},//LSC Out_H ofs G
-{0xac, 0x00,},//LSC Out_H ofs B
-{0xad, 0x00,},//LSC Out_H ofs R
-{0xae, 0x80,},//LSC Out_H Gain G
-{0xaf, 0x86,},//LSC Out_H Gain B
-{0xb0, 0x7e,},//LSC Out_H Gain R
+{0xab, 0x00,},	//LSC Out_H ofs G
+{0xac, 0x00,},	//LSC Out_H ofs B
+{0xad, 0x00,},	//LSC Out_H ofs R
+{0xae, 0x80,},	//LSC Out_H Gain G
+{0xaf, 0x84,},//LSC Out_H Gain B
+{0xb0, 0x78,},//LSC Out_H Gain R
 
-{0xb1, 0x00,},// LSC0_Ind_LowTmp        offset g
-{0xb2, 0x00,},// LSC1_Ind_LowTmp        offset b
-{0xb3, 0x00,},// LSC2_Ind_LowTmp        offset r
-{0xb4, 0x80,},// LSC3_Ind_LowTmp        gain g
-{0xb5, 0x80,},// LSC4_Ind_LowTmp        gain b
-{0xb6, 0x84,},// LSC5_Ind_LowTmp        gain r
+{0xb1, 0x00,},	// LSC0_Ind_LowTmp        offset g
+{0xb2, 0x00,},	// LSC1_Ind_LowTmp        offset b
+{0xb3, 0x00,},	// LSC2_Ind_LowTmp        offset r
+{0xb4, 0x80,},	// LSC3_Ind_LowTmp        gain g
+{0xb5, 0x80,},	// LSC4_Ind_LowTmp        gain b
+{0xb6, 0x88,},	// LSC5_Ind_LowTmp        gain r
 
-{0xb7, 0x00,},// LSC0_Ind_MiddleTmp     offset g
-{0xb8, 0x00,},// LSC1_Ind_MiddleTmp     offset b
-{0xb9, 0x00,},// LSC2_Ind_MiddleTmp     offset r
-{0xba, 0x80,},// LSC3_Ind_MiddleTmp     gain g
-{0xbb, 0x80,},// LSC4_Ind_MiddleTmp     gain b
-{0xbc, 0x78,},// LSC5_Ind_MiddleTmp     gain r
+{0xb7, 0x00,},	// LSC0_Ind_MiddleTmp     offset g
+{0xb8, 0x00,},	// LSC1_Ind_MiddleTmp     offset b
+{0xb9, 0x00,},	// LSC2_Ind_MiddleTmp     offset r
+{0xba, 0x80,},	// LSC3_Ind_MiddleTmp     gain g
+{0xbb, 0x80,},	// LSC4_Ind_MiddleTmp     gain b
+{0xbc, 0x7e,},	// LSC5_Ind_MiddleTmp     gain r
 
-{0xbd, 0x00,},// LSC0_Ind_HighTmp       offset g
-{0xbe, 0x00,},// LSC1_Ind_HighTmp       offset b
-{0xbf, 0x00,},// LSC2_Ind_HighTmp       offset r
-{0xc0, 0x80,},// LSC3_Ind_HighTmp       gain g
-{0xc1, 0x80,},// LSC4_Ind_HighTmp       gain b
-{0xc2, 0x7a,},// LSC5_Ind_HighTmp       gain r
+{0xbd, 0x00,},	// LSC0_Ind_HighTmp       offset g
+{0xbe, 0x00,},	// LSC1_Ind_HighTmp       offset b
+{0xbf, 0x00,},	// LSC2_Ind_HighTmp       offset r
+{0xc0, 0x80,},	// LSC3_Ind_HighTmp       gain g
+{0xc1, 0x80,},	// LSC4_Ind_HighTmp       gain b
+{0xc2, 0x7e,},// LSC5_Ind_HighTmp       gain r
 
 {0xc3, 0x00,},	// LSC0_Dark1_LowTmp      offset g
 {0xc4, 0x00,},	// LSC1_Dark1_LowTmp      offset b
 {0xc5, 0x00,},	// LSC2_Dark1_LowTmp      offset r
 {0xc6, 0x68,},	// LSC3_Dark1_LowTmp      gain g
-{0xc7, 0x65,},// LSC4_Dark1_LowTmp      gain b
-{0xc8, 0x62,},// LSC5_Dark1_LowTmp      gain r
+{0xc7, 0x68,},	// LSC4_Dark1_LowTmp      gain b
+{0xc8, 0x68,},	// LSC5_Dark1_LowTmp      gain r
 
 {0xc9, 0x00,},	// LSC0_Dark1_MiddleTmp   offset g
 {0xca, 0x00,},	// LSC1_Dark1_MiddleTmp   offset b
 {0xcb, 0x00,},	// LSC2_Dark1_MiddleTmp   offset r
 {0xcc, 0x68,},	// LSC3_Dark1_MiddleTmp   gain g
-{0xcd, 0x65,},// LSC4_Dark1_MiddleTmp   gain b
-{0xce, 0x62,},// LSC5_Dark1_MiddleTmp   gain r
+{0xcd, 0x68,},	// LSC4_Dark1_MiddleTmp   gain b
+{0xce, 0x68,},	// LSC5_Dark1_MiddleTmp   gain r
 
 {0xcf, 0x00,},	// LSC0_Dark1_HighTmp   offset g
 {0xd0, 0x00,},	// LSC1_Dark1_HighTmp   offset b
 {0xd1, 0x00,},	// LSC2_Dark1_HighTmp   offset r
 {0xd2, 0x68,},	// LSC3_Dark1_HighTmp   gain g
-{0xd3, 0x65,},// LSC4_Dark1_HighTmp   gain b
-{0xd4, 0x62,},// LSC5_Dark1_HighTmp   gain r
+{0xd3, 0x68,},	// LSC4_Dark1_HighTmp   gain b
+{0xd4, 0x68,},	// LSC5_Dark1_HighTmp   gain r
 
 {0xd5, 0x00,},	// LSC0_Dark2           offset g
 {0xd6, 0x00,},	// LSC1_Dark2           offset b
 {0xd7, 0x00,},	// LSC2_Dark2           offset r
 {0xd8, 0x68,},	// LSC3_Dark2           gain g
-{0xd9, 0x65,},// LSC4_Dark2           gain b
-{0xda, 0x62,},// LSC5_Dark2           gain r
+{0xd9, 0x68,},	// LSC4_Dark2           gain b
+{0xda, 0x68,},	// LSC5_Dark2           gain r
 
 {0xdb, 0x2f,}, //CMCSIGN_Out
 {0xdc, 0x55,}, //CMC_Out_00
@@ -22354,7 +22353,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x22, 0x40,},
 {0x23, 0x37,}, //Outdoor 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xbf,}, //Outdoor 1270 // Bayer Sharpness ENB add 720p
+{0x25, 0x9f,}, //Outdoor 1270 // Bayer Sharpness ENB add 720p
 {0x26, 0x71,},
 {0x27, 0x1a,}, //Outdoor 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -23232,7 +23231,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x22, 0x40,},
 {0x23, 0x37,}, //Indoor 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xbf,}, //Indoor 1270 // Bayer Sharpness ENB add
+{0x25, 0x9f,}, //Indoor 1270 // Bayer Sharpness ENB add
 {0x26, 0x71,},
 {0x27, 0x1a,}, //Indoor 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -24110,7 +24109,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x22, 0x40,},
 {0x23, 0x36,}, //Dark1 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xa1,}, //Dark1 1270 // Bayer Sharpness ENB add 720p
+{0x25, 0x81,}, //Dark1 1270 // Bayer Sharpness ENB add 720p
 {0x26, 0x71,},
 {0x27, 0x07,}, //Dark1 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -24988,7 +24987,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD[] = {
 {0x22, 0x40,},
 {0x23, 0x36,}, //Dark2 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xa1,}, //Dark2 1270 // Bayer Sharpness ENB add 720p
+{0x25, 0x81,}, //Dark2 1270 // Bayer Sharpness ENB add 720p
 {0x26, 0x71,},
 {0x27, 0x07,}, //Dark2 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -25697,7 +25696,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x01, 0x07,},
 {0x01, 0x01,},
 
-{0x05, 0x04,}, // ver1.13
+{0x05, 0x03,}, // ver1.103
 {0x0d, 0xaa,}, // ESD Check Register
 {0x0f, 0xaa,}, // ESD Check Register
 
@@ -27576,10 +27575,10 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x2c, 0x08,}, //middle_h_th
 {0x2d, 0x08,}, //middle_l_th
 {0x2e, 0x06,}, //dark_th
-{0x2f, 0x40,}, //20121127 _DPC TH
-{0x30, 0x40,}, //20121127 _DPC TH
-{0x31, 0x40,}, //20121127 _DPC TH
-{0x32, 0x40,}, //20121127 _DPC TH
+{0x2f, 0x10,}, //20121127 _DPC TH
+{0x30, 0x10,}, //20121127 _DPC TH
+{0x31, 0x10,}, //20121127 _DPC TH
+{0x32, 0x10,}, //20121127 _DPC TH
 {0x41, 0x88,}, //GBGR Cut off //46
 
 ///////////////////////////////////
@@ -27866,87 +27865,87 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x03, 0xC8,},
 {0x0e, 0x01,}, // burst start
 
-{0x10, 0xD2,},
+{0x10, 0xf6,},
 {0x11, 0xc3,},
-{0x12, 0xe4,},
+{0x12, 0xe0,},
 {0x13, 0x1a,}, //bCtl4
 {0x14, 0x9f,},
 {0x15, 0xc4,},
 {0x16, 0x00,},
-{0x17, 0x00,},
-{0x18, 0x11,},
-{0x19, 0x22,},
-{0x1a, 0x22,},
-{0x1b, 0x44,},
-{0x1c, 0x44,},
-{0x1d, 0x66,},
-{0x1e, 0x66,},
-{0x1f, 0x88,},
-{0x20, 0x88,},
+{0x17, 0x34,},
+{0x18, 0x55,},
+{0x19, 0x66,},
+{0x1a, 0x66,},
+{0x1b, 0x88,},
+{0x1c, 0x88,},
+{0x1d, 0x88,},
+{0x1e, 0x88,},
+{0x1f, 0xaa,},
+{0x20, 0xaa,},
 {0x21, 0x00,},
 {0x22, 0x01,},
-{0x23, 0x08,},
-{0x24, 0x00,},
+{0x23, 0x1e,},
+{0x24, 0xff,},
 {0x25, 0x1e,},
-{0x26, 0x30,}, //init awb speed
-{0x27, 0x6a,},
-{0x28, 0x80,},
-{0x29, 0x10,},
-{0x2a, 0x04,},
-{0x2b, 0x0a,},
+{0x26, 0x51,}, //init awb speed
+{0x27, 0xff,},
+{0x28, 0xf0,},
+{0x29, 0x01,},
+{0x2a, 0x00,},
+{0x2b, 0x1e,},
 {0x2c, 0x04,},
 {0x2d, 0x0c,},
 {0x2e, 0x1e,},
-{0x2f, 0x00,},//dwOutdoorCondInTh
-{0x30, 0x00,},//dwOutdoorCondInTh_n01
-{0x31, 0x21,},//dwOutdoorCondInTh_n02
-{0x32, 0x34,},//dwOutdoorCondInTh_n03
-{0x33, 0x00,},//dwOutdoorCondOutTh
-{0x34, 0x00,},//dwOutdoorCondOutTh_n01
-{0x35, 0x27,},//dwOutdoorCondOutTh_n02
-{0x36, 0x10,},//dwOutdoorCondOutTh_n03
-{0x37, 0x00,},//dwEvTh
-{0x38, 0x00,},//dwEvTh_n01
+{0x2f, 0x00,}, //dwOutdoorCondInTh
+{0x30, 0x00,}, //dwOutdoorCondInTh_n01
+{0x31, 0x21,}, //dwOutdoorCondInTh_n02
+{0x32, 0x34,}, //dwOutdoorCondInTh_n03
+{0x33, 0x00,}, //dwOutdoorCondOutTh
+{0x34, 0x00,}, //dwOutdoorCondOutTh_n01
+{0x35, 0x27,}, //dwOutdoorCondOutTh_n02
+{0x36, 0x10,}, //dwOutdoorCondOutTh_n03
+{0x37, 0x00,}, //dwEvTh
+{0x38, 0x00,}, //dwEvTh_n01
 {0x39, 0x04,},//dwEvTh_n02 //840fps
-{0x3a, 0x11,},//dwEvTh_n03
-{0x3b, 0x00,},//dwEvTh_a01
-{0x3c, 0x00,},//dwEvTh_a01_n01
+{0x3a, 0xa6,},//dwEvTh_n03
+{0x3b, 0x00,}, //dwEvTh_a01
+{0x3c, 0x00,}, //dwEvTh_a01_n01
 {0x3d, 0x08,},//dwEvTh_a01_n02
 {0x3e, 0x23,},//dwEvTh_a01_n03 //480fps
-{0x3f, 0x00,},//dwEvTh_a02
-{0x40, 0x00,},//dwEvTh_a02_n01
+{0x3f, 0x00,}, //dwEvTh_a02
+{0x40, 0x00,}, //dwEvTh_a02_n01
 {0x41, 0x20,},//dwEvTh_a02_n02
-{0x42, 0x8D,},//dwEvTh_a02_n03 //120fps
-{0x43, 0x00,},//dwEvTh_a03
-{0x44, 0x00,},//dwEvTh_a03_n01
-{0x45, 0x61,},//dwEvTh_a03_n02
+{0x42, 0x8d,},//dwEvTh_a02_n03 //120fps
+{0x43, 0x00,}, //dwEvTh_a03
+{0x44, 0x00,}, //dwEvTh_a03_n01
+{0x45, 0x61,}, //dwEvTh_a03_n02
 {0x46, 0xa8,},//dwEvTh_a03_n03 //40fps
-{0x47, 0x00,},//dwEvTh_a04
-{0x48, 0x04,},//dwEvTh_a04_n01
-{0x49, 0xc4,},//dwEvTh_a04_n02
-{0x4a, 0xb4,},//dwEvTh_a04_n03
-{0x4b, 0x00,},//dwEvTh_a05
-{0x4c, 0x0b,},//dwEvTh_a05_n01
-{0x4d, 0x71,},//dwEvTh_a05_n02
-{0x4e, 0xb0,},//dwEvTh_a05_n03
+{0x47, 0x00,}, //dwEvTh_a04
+{0x48, 0x04,}, //dwEvTh_a04_n01
+{0x49, 0xc4,}, //dwEvTh_a04_n02
+{0x4a, 0xb4,}, //dwEvTh_a04_n03
+{0x4b, 0x00,}, //dwEvTh_a05
+{0x4c, 0x0b,}, //dwEvTh_a05_n01
+{0x4d, 0x71,}, //dwEvTh_a05_n02
+{0x4e, 0xb0,}, //dwEvTh_a05_n03
 {0x4f, 0x96,},//aAglMaxMinLmt
-{0x50, 0x4a,},//aAglMaxMinLmt_a01
+{0x50, 0x58,},//aAglMaxMinLmt_a01
 {0x51, 0x9C,},//aAglMaxMinLmt_a02
 {0x52, 0x60,}, //aAglMaxMinLmt_a03
-{0x53, 0xa0,},//aAglMaxMinLmt_a04
-{0x54, 0x20,},//aAglMaxMinLmt_a05
-{0x55, 0xa0,},//aAglMaxMinLmt_a06
-{0x56, 0x32,},//aAglMaxMinLmt_a07            13.05.21 Night shot awb issue h38->h32
-{0x57, 0x78,},//aTgtWhtRgnBgMaxMinLmt
-{0x58, 0x56,},//aTgtWhtRgnBgMaxMinLmt_a01
-{0x59, 0x81,},//aTgtWhtRgnBgMaxMinLmt_a02
-{0x5a, 0x51,},//aTgtWhtRgnBgMaxMinLmt_a03
-{0x5b, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a04
-{0x5c, 0x20,},//aTgtWhtRgnBgMaxMinLmt_a05
-{0x5d, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a06
-{0x5e, 0x32,},//aTgtWhtRgnBgMaxMinLmt_a07   13.05.21 Night shot awb issue h42->h32
+{0x53, 0xa0,}, //aAglMaxMinLmt_a04
+{0x54, 0x20,}, //aAglMaxMinLmt_a05
+{0x55, 0xa0,}, //aAglMaxMinLmt_a06
+{0x56, 0x38,},//aAglMaxMinLmt_a07
+{0x57, 0x70,},//aTgtWhtRgnBgMaxMinLmt      out2 max
+{0x58, 0x5e,},//aTgtWhtRgnBgMaxMinLmt_a01  out2 min
+{0x59, 0x74,},//aTgtWhtRgnBgMaxMinLmt_a02  out1 max
+{0x5a, 0x5c,},//aTgtWhtRgnBgMaxMinLmt_a03  out1 min
+{0x5b, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a04  in max
+{0x5c, 0x20,},//aTgtWhtRgnBgMaxMinLmt_a05  in min
+{0x5d, 0x98,},//aTgtWhtRgnBgMaxMinLmt_a06  dark max
+{0x5e, 0x42,},//aTgtWhtRgnBgMaxMinLmt_a07  dark min
 
-{0x5f, 0x10,},//bTgtWhtRgnBgStep
+{0x5f, 0x10,}, //bTgtWhtRgnBgStep
 {0x60, 0x0a,},//BpOption distance weight  def : 0a -> 04 -> 02
 
 {0x61, 0x1e,},
@@ -28001,7 +28000,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x92, 0x00,},
 
 {0x93, 0x00,}, //Indoor_wRgIntOfs
-{0x94, 0xc0,},//Indoor_wRgIntOfs_n01
+{0x94, 0xc0,}, //Indoor_wRgIntOfs_n01
 {0x95, 0x00,}, //Indoor_wBgIntOfs
 {0x96, 0xc0,}, //Indoor_wBgIntOfs_n01
 {0x97, 0x10,}, //Indoor_bRgStep
@@ -28024,12 +28023,12 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0xa8, 0x60,},//Indoor_aTgtWhtRgnRgLtLmt_a04
 {0xa9, 0x56,},//Indoor_aTgtWhtRgnRgLtLmt_a05
 {0xaa, 0x4c,},//Indoor_aTgtWhtRgnRgLtLmt_a06
-{0xab, 0x45,},//Indoor_aTgtWhtRgnRgLtLmt_a07
-{0xac, 0x40,},//Indoor_aTgtWhtRgnRgLtLmt_a08
-{0xad, 0x3c,},//Indoor_aTgtWhtRgnRgLtLmt_a09
+{0xab, 0x45,}, //Indoor_aTgtWhtRgnRgLtLmt_a07
+{0xac, 0x40,}, //Indoor_aTgtWhtRgnRgLtLmt_a08
+{0xad, 0x3c,}, //Indoor_aTgtWhtRgnRgLtLmt_a09
 {0xae, 0x39,},//Indoor_aTgtWhtRgnRgLtLmt_a10
-{0xaf, 0xaa,},//Indoor_aTgtWhtRgnRgRtLmt
-{0xb0, 0xa9,},//Indoor_aTgtWhtRgnRgRtLmt_a01
+{0xaf, 0xaa,}, //Indoor_aTgtWhtRgnRgRtLmt
+{0xb0, 0xa9,}, //Indoor_aTgtWhtRgnRgRtLmt_a01
 {0xb1, 0xa8,},//Indoor_aTgtWhtRgnRgRtLmt_a02
 {0xb2, 0xa2,},//Indoor_aTgtWhtRgnRgRtLmt_a03
 {0xb3, 0x95,},//Indoor_aTgtWhtRgnRgRtLmt_a04
@@ -28058,9 +28057,9 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0xca, 0x50,},//Indoor_aOptWhtRgnRgLtLmt_a05
 {0xcb, 0x46,},//Indoor_aOptWhtRgnRgLtLmt_a06
 {0xcc, 0x40,},//Indoor_aOptWhtRgnRgLtLmt_a07
-{0xcd, 0x39,},//Indoor_aOptWhtRgnRgLtLmt_a08
-{0xce, 0x35,},//Indoor_aOptWhtRgnRgLtLmt_a09
-{0xcf, 0x33,},//Indoor_aOptWhtRgnRgLtLmt_a10
+{0xcd, 0x39,}, //Indoor_aOptWhtRgnRgLtLmt_a08
+{0xce, 0x35,}, //Indoor_aOptWhtRgnRgLtLmt_a09
+{0xcf, 0x33,}, //Indoor_aOptWhtRgnRgLtLmt_a10
 {0xd0, 0xba,},//Indoor_aOptWhtRgnRgRtLmt
 {0xd1, 0xb9,},//Indoor_aOptWhtRgnRgRtLmt_a01
 {0xd2, 0xb8,},//Indoor_aOptWhtRgnRgRtLmt_a02
@@ -28083,11 +28082,11 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0xe2, 0x27,}, //Indoor_aCtmpWgtHgtTh
 {0xe3, 0x32,}, //Indoor_aCtmpWgtHgtTh_a01
 {0xe4, 0x3c,}, //Indoor_aCtmpWgtHgtTh_a02
-{0xe5, 0x48,}, //Indoor_aCtmpWgtHgtTh_a03
-{0xe6, 0x5c,}, //Indoor_aCtmpWgtHgtTh_a04
-{0xe7, 0x70,}, //Indoor_aCtmpWgtHgtTh_a05
-{0xe8, 0x7c,}, //Indoor_aCtmpWgtHgtTh_a06
-{0xe9, 0x86,}, //Indoor_aCtmpWgtHgtTh_a07
+{0xe5, 0x48,},//Indoor_aCtmpWgtHgtTh_a03
+{0xe6, 0x5c,},//Indoor_aCtmpWgtHgtTh_a04
+{0xe7, 0x70,},//Indoor_aCtmpWgtHgtTh_a05
+{0xe8, 0x7c,},//Indoor_aCtmpWgtHgtTh_a06
+{0xe9, 0x86,},//Indoor_aCtmpWgtHgtTh_a07
 {0xea, 0x90,}, //Indoor_aCtmpWgtHgtTh_a08
 {0xeb, 0x11,}, //Indoor_aCtmpWgt
 {0xec, 0x11,}, //Indoor_aCtmpWgt_a01
@@ -28137,26 +28136,24 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x24, 0x32,},//Indoor_aYlvlWgt_a14
 {0x25, 0x21,},//Indoor_aYlvlWgt_a15
 
-{0x26, 0x34,},//Indoor_aTgtAngle
-{0x27, 0x3e,},//Indoor_aTgtAngle_a01
-{0x28, 0x41,},//Indoor_aTgtAngle_a02
-{0x29, 0x4e,},//Indoor_aTgtAngle_a03
-{0x2a, 0x72,},//Indoor_aTgtAngle_a04
+{0x26, 0x34,}, //Indoor_aTgtAngle
+{0x27, 0x3e,}, //Indoor_aTgtAngle_a01
+{0x28, 0x41,}, //Indoor_aTgtAngle_a02
+{0x29, 0x4e,}, //Indoor_aTgtAngle_a03
+{0x2a, 0x72,}, //Indoor_aTgtAngle_a04
+{0x2b, 0x10,}, //Indoor_aRgTgtOfs
+{0x2c, 0x10,}, //Indoor_aRgTgtOfs_a01
+{0x2d, 0x8e,}, //Indoor_aRgTgtOfs_a02
+{0x2e, 0x84,}, //Indoor_aRgTgtOfs_a03
+{0x2f, 0x86,}, //Indoor_aRgTgtOfs_a04
+{0x30, 0xc6,}, //Indoor_aBgTgtOfs
+{0x31, 0xc6,}, //Indoor_aBgTgtOfs_a01
+{0x32, 0xb1,}, //Indoor_aBgTgtOfs_a02
+{0x33, 0x8a,}, //Indoor_aBgTgtOfs_a03
+{0x34, 0x84,}, //Indoor_aBgTgtOfs_a04 h88->h00  13.5.29 choi
 
-{0x2b, 0x10,},//Indoor_aRgTgtOfs
-{0x2c, 0x10,},//Indoor_aRgTgtOfs_a01
-{0x2d, 0x8e,},//Indoor_aRgTgtOfs_a02
-{0x2e, 0x84,},//Indoor_aRgTgtOfs_a03
-{0x2f, 0x86,},//Indoor_aRgTgtOfs_a04
-
-{0x30, 0xc6,},//Indoor_aBgTgtOfs
-{0x31, 0xc6,},//Indoor_aBgTgtOfs_a01
-{0x32, 0xb1,},//Indoor_aBgTgtOfs_a02
-{0x33, 0x8a,},//Indoor_aBgTgtOfs_a03
-{0x34, 0x84,},//Indoor_aBgTgtOfs_a04 h88->h00  13.5.29 choi
-
-{0x35, 0x24,},//bRgDefTgt //indoor
-{0x36, 0x00,},//bBgDefTgt //indoor
+{0x35, 0x24,}, //bRgDefTgt //indoor
+{0x36, 0x00,}, //bBgDefTgt //indoor
 
 {0x37, 0x20,},//Indoor_aWhtPtTrcAglOfs
 {0x38, 0x1e,},//Indoor_aWhtPtTrcAglOfs_a01
@@ -28235,7 +28232,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x80, 0x00,}, //Indoor_aRatioBox_a39
 
 {0x81, 0x00,}, //Outdoor_wRgIntOfs
-{0x82, 0x08,}, //Outdoor_wRgIntOfs_n01    h40->h20  13.5.27  LSC update shift
+{0x82, 0x08,},//Outdoor_wRgIntOfs_n01
 {0x83, 0x01,}, //Outdoor_wBgIntOfs
 {0x84, 0x00,}, //Outdoor_wBgIntOfs_n01
 {0x85, 0x10,}, //Outdoor_bRgStep
@@ -28255,13 +28252,13 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x93, 0x57,}, //Outdoor_aTgtWhtRgnRgLtLmt_a01
 {0x94, 0x51,}, //Outdoor_aTgtWhtRgnRgLtLmt_a02
 {0x95, 0x50,}, //Outdoor_aTgtWhtRgnRgLtLmt_a03
-{0x96, 0x4e,}, //Outdoor_aTgtWhtRgnRgLtLmt_a04
-{0x97, 0x4c,}, //Outdoor_aTgtWhtRgnRgLtLmt_a05
-{0x98, 0x4b,}, //Outdoor_aTgtWhtRgnRgLtLmt_a06
-{0x99, 0x49,}, //Outdoor_aTgtWhtRgnRgLtLmt_a07
+{0x96, 0x4e,},//Outdoor_aTgtWhtRgnRgLtLmt_a04
+{0x97, 0x4c,},//Outdoor_aTgtWhtRgnRgLtLmt_a05
+{0x98, 0x4b,},//Outdoor_aTgtWhtRgnRgLtLmt_a06
+{0x99, 0x49,},//Outdoor_aTgtWhtRgnRgLtLmt_a07
 {0x9a, 0x47,}, //Outdoor_aTgtWhtRgnRgLtLmt_a08
-{0x9b, 0x46,}, //Outdoor_aTgtWhtRgnRgLtLmt_a09
-{0x9c, 0x45,}, //Outdoor_aTgtWhtRgnRgLtLmt_a10
+{0x9b, 0x46,},//Outdoor_aTgtWhtRgnRgLtLmt_a09
+{0x9c, 0x45,},//Outdoor_aTgtWhtRgnRgLtLmt_a10
 {0x9d, 0x64,}, //Outdoor_aTgtWhtRgnRgRtLmt
 {0x9e, 0x63,}, //Outdoor_aTgtWhtRgnRgRtLmt_a01
 {0x9f, 0x62,}, //Outdoor_aTgtWhtRgnRgRtLmt_a02
@@ -28269,10 +28266,10 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0xa1, 0x61,}, //Outdoor_aTgtWhtRgnRgRtLmt_a04
 {0xa2, 0x60,}, //Outdoor_aTgtWhtRgnRgRtLmt_a05
 {0xa3, 0x5e,}, //Outdoor_aTgtWhtRgnRgRtLmt_a06
-{0xa4, 0x5d,}, //Outdoor_aTgtWhtRgnRgRtLmt_a07
-{0xa5, 0x5c,}, //Outdoor_aTgtWhtRgnRgRtLmt_a08
+{0xa4, 0x5d,},//Outdoor_aTgtWhtRgnRgRtLmt_a07
+{0xa5, 0x5c,},//Outdoor_aTgtWhtRgnRgRtLmt_a08
 {0xa6, 0x5a,}, //Outdoor_aTgtWhtRgnRgRtLmt_a09
-{0xa7, 0x57,}, //Outdoor_aTgtWhtRgnRgRtLmt_a10
+{0xa7, 0x57,},//Outdoor_aTgtWhtRgnRgRtLmt_a10
 {0xa8, 0x40,}, //Outdoor_aOptWhtRgnBg
 {0xa9, 0x45,}, //Outdoor_aOptWhtRgnBg_a01
 {0xaa, 0x4b,}, //Outdoor_aOptWhtRgnBg_a02
@@ -28308,12 +28305,12 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0xc8, 0x4a,}, //Outdoor_aOptWhtRgnRgRtLmt_a10
 
 {0xc9, 0x42,}, //Outdoor_aCtmpWgtWdhTh
-{0xca, 0x4c,}, //Outdoor_aCtmpWgtWdhTh_a01
-{0xcb, 0x54,}, //Outdoor_aCtmpWgtWdhTh_a02
-{0xcc, 0x5c,}, //Outdoor_aCtmpWgtWdhTh_a03
-{0xcd, 0x64,}, //Outdoor_aCtmpWgtWdhTh_a04
-{0xce, 0x6c,}, //Outdoor_aCtmpWgtWdhTh_a05
-{0xcf, 0x74,}, //Outdoor_aCtmpWgtWdhTh_a06
+{0xca, 0x4c,},//Outdoor_aCtmpWgtWdhTh_a01
+{0xcb, 0x54,},//Outdoor_aCtmpWgtWdhTh_a02
+{0xcc, 0x5c,},//Outdoor_aCtmpWgtWdhTh_a03
+{0xcd, 0x64,},//Outdoor_aCtmpWgtWdhTh_a04
+{0xce, 0x6c,},//Outdoor_aCtmpWgtWdhTh_a05
+{0xcf, 0x74,},//Outdoor_aCtmpWgtWdhTh_a06
 {0xd0, 0x42,}, //Outdoor_aCtmpWgtHgtTh
 {0xd1, 0x52,}, //Outdoor_aCtmpWgtHgtTh_a01
 {0xd2, 0x58,}, //Outdoor_aCtmpWgtHgtTh_a02
@@ -28324,28 +28321,28 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0xd7, 0x7a,}, //Outdoor_aCtmpWgtHgtTh_a07
 {0xd8, 0x88,}, //Outdoor_aCtmpWgtHgtTh_a08
 {0xd9, 0x11,}, //Outdoor_aCtmpWgt
-{0xda, 0x23,}, //Outdoor_aCtmpWgt_a01
-{0xdb, 0x22,}, //Outdoor_aCtmpWgt_a02
+{0xda, 0x23,},//Outdoor_aCtmpWgt_a01
+{0xdb, 0x22,},//Outdoor_aCtmpWgt_a02
 {0xdc, 0x11,}, //Outdoor_aCtmpWgt_a03
-{0xdd, 0x22,}, //Outdoor_aCtmpWgt_a04
+{0xdd, 0x22,},//Outdoor_aCtmpWgt_a04
 {0xde, 0x22,}, //Outdoor_aCtmpWgt_a05
 {0xdf, 0x11,}, //Outdoor_aCtmpWgt_a06
 {0xe0, 0x33,}, //Outdoor_aCtmpWgt_a07
-{0xe1, 0x31,}, //Outdoor_aCtmpWgt_a08
+{0xe1, 0x31,},//Outdoor_aCtmpWgt_a08
 {0xe2, 0x12,}, //Outdoor_aCtmpWgt_a09
-{0xe3, 0x66,}, //Outdoor_aCtmpWgt_a10
-{0xe4, 0x41,}, //Outdoor_aCtmpWgt_a11
+{0xe3, 0x66,},//Outdoor_aCtmpWgt_a10
+{0xe4, 0x41,},//Outdoor_aCtmpWgt_a11
 {0xe5, 0x13,}, //Outdoor_aCtmpWgt_a12
-{0xe6, 0x77,}, //Outdoor_aCtmpWgt_a13
-{0xe7, 0x41,}, //Outdoor_aCtmpWgt_a14
-{0xe8, 0x13,}, //Outdoor_aCtmpWgt_a15
+{0xe6, 0x77,},//Outdoor_aCtmpWgt_a13
+{0xe7, 0x41,},//Outdoor_aCtmpWgt_a14
+{0xe8, 0x13,},//Outdoor_aCtmpWgt_a15
 {0xe9, 0x74,}, //Outdoor_aCtmpWgt_a16
 {0xea, 0x11,}, //Outdoor_aCtmpWgt_a17
-{0xeb, 0x23,}, //Outdoor_aCtmpWgt_a18
-{0xec, 0x53,}, //Outdoor_aCtmpWgt_a19
+{0xeb, 0x23,},//Outdoor_aCtmpWgt_a18
+{0xec, 0x53,},//Outdoor_aCtmpWgt_a19
 {0xed, 0x11,}, //Outdoor_aCtmpWgt_a20
-{0xee, 0x43,}, //Outdoor_aCtmpWgt_a21
-{0xef, 0x31,}, //Outdoor_aCtmpWgt_a22
+{0xee, 0x43,},//Outdoor_aCtmpWgt_a21
+{0xef, 0x31,},//Outdoor_aCtmpWgt_a22
 {0xf0, 0x11,}, //Outdoor_aCtmpWgt_a23
 {0xf1, 0x11,}, //Outdoor_aCtmpWgt_a24
 
@@ -28353,7 +28350,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0xf3, 0x34,}, //aYlvlWgt_a01
 {0xf4, 0x43,}, //aYlvlWgt_a02
 {0xf5, 0x32,}, //aYlvlWgt_a03
-{0xf6, 0x22,}, //aYlvlWgt_a04
+{0xf6, 0x11,},//aYlvlWgt_a04
 {0xf7, 0x11,}, //aYlvlWgt_a05
 {0xf8, 0x11,}, //aYlvlWgt_a06
 {0xf9, 0x11,}, //aYlvlWgt_a07
@@ -28372,25 +28369,23 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x12, 0x22,}, //aYlvlWgt_a14
 {0x13, 0x11,}, //aYlvlWgt_a15
 
-{0x14, 0x64,},//Outdoor_aTgtAngle
-{0x15, 0x6b,},//Outdoor_aTgtAngle_a01
-{0x16, 0x72,},//Outdoor_aTgtAngle_a02
-{0x17, 0x7a,},//Outdoor_aTgtAngle_a03
-{0x18, 0x84,},//Outdoor_aTgtAngle_a04
-{0x19, 0x16,},//Outdoor_aRgTgtOfs
-{0x1a, 0x0e,},//Outdoor_aRgTgtOfs_a01
-{0x1b, 0x82,},//Outdoor_aRgTgtOfs_a02
-{0x1c, 0x88,},//Outdoor_aRgTgtOfs_a03
-{0x1d, 0x88,},//Outdoor_aRgTgtOfs_a04
-
-{0x1e, 0x9e,},//Outdoor_aBgTgtOfs
-{0x1f, 0x8b,},//Outdoor_aBgTgtOfs_a01
-{0x20, 0x89,},//Outdoor_aBgTgtOfs_a02
-{0x21, 0x87,},//Outdoor_aBgTgtOfs_a03
-{0x22, 0x84,},//Outdoor_aBgTgtOfs_a04
-
-{0x23, 0x92,},//Outdoor_bRgDefTgt
-{0x24, 0x8d,},//Outdoor_bBgDefTgt
+{0x14, 0x64,}, //Outdoor_aTgtAngle
+{0x15, 0x6b,}, //Outdoor_aTgtAngle_a01
+{0x16, 0x72,}, //Outdoor_aTgtAngle_a02
+{0x17, 0x7a,}, //Outdoor_aTgtAngle_a03
+{0x18, 0x84,}, //Outdoor_aTgtAngle_a04
+{0x19, 0x16,}, //Outdoor_aRgTgtOfs
+{0x1a, 0x0e,}, //Outdoor_aRgTgtOfs_a01
+{0x1b, 0x82,}, //Outdoor_aRgTgtOfs_a02
+{0x1c, 0x88,}, //Outdoor_aRgTgtOfs_a03
+{0x1d, 0x88,}, //Outdoor_aRgTgtOfs_a04
+{0x1e, 0x9e,}, //Outdoor_aBgTgtOfs
+{0x1f, 0x8b,}, //Outdoor_aBgTgtOfs_a01
+{0x20, 0x89,}, //Outdoor_aBgTgtOfs_a02
+{0x21, 0x87,}, //Outdoor_aBgTgtOfs_a03
+{0x22, 0x84,}, //Outdoor_aBgTgtOfs_a04
+{0x23, 0x92,}, //Outdoor_bRgDefTgt
+{0x24, 0x8d,}, //Outdoor_bBgDefTgt
 
 {0x25, 0x1c,}, //Outdoor_aWhtPtTrcAglOfs
 {0x26, 0x1a,}, //Outdoor_aWhtPtTrcAglOfs_a01
@@ -28412,8 +28407,8 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x36, 0x0a,}, //Outdoor_bWgtOfsTh1
 {0x37, 0xa0,}, //Outdoor_bWgtOfsTh2
 
-{0x38, 0x6d,},//Outdoor_bWhtPtCorAglMin
-{0x39, 0x78,},//Outdoor_bWhtPtCorAglMax
+{0x38, 0x6d,}, //Outdoor_bWhtPtCorAglMin
+{0x39, 0x78,}, //Outdoor_bWhtPtCorAglMax
 
 {0x3a, 0x04,}, //Outdoor_bYlvlMin
 {0x3b, 0xf8,}, //Outdoor_bYlvlMax
@@ -28428,105 +28423,109 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x44, 0xc0,},
 {0x45, 0x07,},
 {0x46, 0xc0,},
-{0x47, 0x02,},//Outdoor_aRatioBox
-{0x48, 0xb2,},//Outdoor_aRatioBox_a01
-{0x49, 0x05,},//Outdoor_aRatioBox_a02
-{0x4a, 0xdc,},//Outdoor_aRatioBox_a03
-{0x4b, 0x0a,},//Outdoor_aRatioBox_a04
-{0x4c, 0x28,},//Outdoor_aRatioBox_a05
-{0x4d, 0x0c,},//Outdoor_aRatioBox_a06
-{0x4e, 0x1c,},//Outdoor_aRatioBox_a07
-{0x4f, 0x02,},//Outdoor_aRatioBox_a08
-{0x50, 0xee,},//Outdoor_aRatioBox_a09
-{0x51, 0x06,},//Outdoor_aRatioBox_a10
-{0x52, 0x72,},//Outdoor_aRatioBox_a11
-{0x53, 0x08,},//Outdoor_aRatioBox_a12
-{0x54, 0x98,},//Outdoor_aRatioBox_a13
-{0x55, 0x0a,},//Outdoor_aRatioBox_a14
-{0x56, 0xf0,},//Outdoor_aRatioBox_a15
-{0x57, 0x03,},//Outdoor_aRatioBox_a16
-{0x58, 0x20,},//Outdoor_aRatioBox_a17
-{0x59, 0x07,},//Outdoor_aRatioBox_a18
-{0x5a, 0x08,},//Outdoor_aRatioBox_a19
-{0x5b, 0x07,},//Outdoor_aRatioBox_a20
-{0x5c, 0x6c,},//Outdoor_aRatioBox_a21
-{0x5d, 0x09,},//Outdoor_aRatioBox_a22
-{0x5e, 0x60,},//Outdoor_aRatioBox_a23
-{0x5f, 0x03,},//Outdoor_aRatioBox_a24
-{0x60, 0x84,},//Outdoor_aRatioBox_a25
-{0x61, 0x07,},//Outdoor_aRatioBox_a26
-{0x62, 0xd0,},//Outdoor_aRatioBox_a27
-{0x63, 0x06,},//Outdoor_aRatioBox_a28
-{0x64, 0x40,},//Outdoor_aRatioBox_a29
-{0x65, 0x08,},//Outdoor_aRatioBox_a30
-{0x66, 0x34,},//Outdoor_aRatioBox_a31
-{0x67, 0x03,},//Outdoor_aRatioBox_a32
-{0x68, 0xe8,},//Outdoor_aRatioBox_a33
-{0x69, 0x08,},//Outdoor_aRatioBox_a34
-{0x6a, 0xd0,},//Outdoor_aRatioBox_a35
-{0x6b, 0x04,},//Outdoor_aRatioBox_a36
-{0x6c, 0x4c,},//Outdoor_aRatioBox_a37
-{0x6d, 0x07,},//Outdoor_aRatioBox_a38
-{0x6e, 0x08,},//Outdoor_aRatioBox_a39
+{0x47, 0x02,}, //Outdoor_aRatioBox
+{0x48, 0xb2,}, //Outdoor_aRatioBox_a01
+{0x49, 0x05,}, //Outdoor_aRatioBox_a02
+{0x4a, 0xdc,}, //Outdoor_aRatioBox_a03
+{0x4b, 0x0a,}, //Outdoor_aRatioBox_a04
+{0x4c, 0x28,}, //Outdoor_aRatioBox_a05
+{0x4d, 0x0c,}, //Outdoor_aRatioBox_a06
+{0x4e, 0x1c,}, //Outdoor_aRatioBox_a07
+{0x4f, 0x02,}, //Outdoor_aRatioBox_a08
+{0x50, 0xee,}, //Outdoor_aRatioBox_a09
+{0x51, 0x06,}, //Outdoor_aRatioBox_a10
+{0x52, 0x72,}, //Outdoor_aRatioBox_a11
+{0x53, 0x08,}, //Outdoor_aRatioBox_a12
+{0x54, 0x98,}, //Outdoor_aRatioBox_a13
+{0x55, 0x0a,}, //Outdoor_aRatioBox_a14
+{0x56, 0xf0,}, //Outdoor_aRatioBox_a15
+{0x57, 0x03,}, //Outdoor_aRatioBox_a16
+{0x58, 0x20,}, //Outdoor_aRatioBox_a17
+{0x59, 0x07,}, //Outdoor_aRatioBox_a18
+{0x5a, 0x08,}, //Outdoor_aRatioBox_a19
+{0x5b, 0x07,}, //Outdoor_aRatioBox_a20
+{0x5c, 0x6c,}, //Outdoor_aRatioBox_a21
+{0x5d, 0x09,}, //Outdoor_aRatioBox_a22
+{0x5e, 0x60,}, //Outdoor_aRatioBox_a23
+{0x5f, 0x03,}, //Outdoor_aRatioBox_a24
+{0x60, 0x84,}, //Outdoor_aRatioBox_a25
+{0x61, 0x07,}, //Outdoor_aRatioBox_a26
+{0x62, 0xd0,}, //Outdoor_aRatioBox_a27
+{0x63, 0x06,}, //Outdoor_aRatioBox_a28
+{0x64, 0x40,}, //Outdoor_aRatioBox_a29
+{0x65, 0x08,}, //Outdoor_aRatioBox_a30
+{0x66, 0x34,}, //Outdoor_aRatioBox_a31
+{0x67, 0x03,}, //Outdoor_aRatioBox_a32
+{0x68, 0xe8,}, //Outdoor_aRatioBox_a33
+{0x69, 0x08,}, //Outdoor_aRatioBox_a34
+{0x6a, 0xd0,}, //Outdoor_aRatioBox_a35
+{0x6b, 0x04,}, //Outdoor_aRatioBox_a36
+{0x6c, 0x4c,}, //Outdoor_aRatioBox_a37
+{0x6d, 0x07,}, //Outdoor_aRatioBox_a38
+{0x6e, 0x08,}, //Outdoor_aRatioBox_a39
 
 {0x6f, 0x04,},
 {0x70, 0x00,},
 
-{0x71, 0x05,},//Out2_Adt_RgainMin
-{0x72, 0x00,},//Out2_Adt_RgainMin_n01
+{0x71, 0x05,}, //Out2_Adt_RgainMin
+{0x72, 0x00,}, //Out2_Adt_RgainMin_n01
 {0x73, 0x05,}, //Out2_Adt_RgainMax
-{0x74, 0xe0,},//Out2_Adt_RgainMax_n01
-{0x75, 0x04,},//Out2_Adt_GgainMin
-{0x76, 0x00,},//Out2_Adt_GgainMin_n01
-{0x77, 0x04,},//Out2_Adt_GgainMax
-{0x78, 0x00,},//Out2_Adt_GgainMax_n01
+{0x74, 0xc0,},//Out2_Adt_RgainMax_n01
+{0x75, 0x04,}, //Out2_Adt_GgainMin
+{0x76, 0x00,}, //Out2_Adt_GgainMin_n01
+{0x77, 0x04,}, //Out2_Adt_GgainMax
+{0x78, 0x00,}, //Out2_Adt_GgainMax_n01
 {0x79, 0x05,}, //Out2_Adt_BgainMin
 {0x7a, 0xe0,}, //Out2_Adt_BgainMin_n01
-{0x7b, 0x07,},//Out2_Adt_BgainMax
-{0x7c, 0x00,},//Out2_Adt_BgainMax_n01
+{0x7b, 0x06,}, //Out2_Adt_BgainMax
+{0x7c, 0xa0,}, //Out2_Adt_BgainMax_n01
 
-{0x7d, 0x05,},//Out1_Adt_RgainMin
+{0x7d, 0x05,}, //Out1_Adt_RgainMin
 {0x7e, 0x40,},//Out1_Adt_RgainMin_n01
-{0x7f, 0x06,},//Out1_Adt_RgainMax
-{0x80, 0x80,}, //Out1_Adt_RgainMax_n01
-{0x81, 0x04,},//Out1_Adt_GgainMin
-{0x82, 0x00,},//Out1_Adt_GgainMin_n01
-{0x83, 0x04,},//Out1_Adt_GgainMax
-{0x84, 0x00,},//Out1_Adt_GgainMax_n01
-{0x85, 0x05,},//Out1_Adt_BgainMin
-{0x86, 0x80,},//Out1_Adt_BgainMin_n01
-{0x87, 0x07,},//Out1_Adt_BgainMax
-{0x88, 0xe0,}, //Out1_Adt_BgainMax_n01
+{0x7f, 0x06,}, //Out1_Adt_RgainMax
+{0x80, 0x40,},//Out1_Adt_RgainMax_n01
+{0x81, 0x04,}, //Out1_Adt_GgainMin
+{0x82, 0x00,}, //Out1_Adt_GgainMin_n01
+{0x83, 0x04,}, //Out1_Adt_GgainMax
+{0x84, 0x00,}, //Out1_Adt_GgainMax_n01
+{0x85, 0x05,}, //Out1_Adt_BgainMin
+{0x86, 0x80,}, //Out1_Adt_BgainMin_n01
+{0x87, 0x07,}, //Out1_Adt_BgainMax
+{0x88, 0x00,}, //Out1_Adt_BgainMax_n01
 
-{0x89, 0x04,},//In_Adt_RgainMin
-{0x8a, 0x00,},//In_Adt_RgainMin_n01
-{0x8b, 0x0d,},//In_Adt_RgainMax
-{0x8c, 0x00,},//In_Adt_RgainMax_n01
-{0x8d, 0x04,},//In_Adt_GgainMin
-{0x8e, 0x00,},//In_Adt_GgainMin_n01
-{0x8f, 0x05,},//In_Adt_GgainMax
+{0x89, 0x04,}, //In_Adt_RgainMin
+{0x8a, 0x00,}, //In_Adt_RgainMin_n01
+{0x8b, 0x0d,}, //In_Adt_RgainMax
+{0x8c, 0x00,}, //In_Adt_RgainMax_n01
+{0x8d, 0x04,}, //In_Adt_GgainMin
+{0x8e, 0x00,}, //In_Adt_GgainMin_n01
+{0x8f, 0x05,}, //In_Adt_GgainMax
 {0x90, 0x80,}, //In_Adt_GgainMax_n01
-{0x91, 0x04,},//In_Adt_BgainMin
-{0x92, 0x00,},//In_Adt_BgainMin_n01
-{0x93, 0x0d,},//In_Adt_BgainMax
-{0x94, 0x80,},//In_Adt_BgainMax_n01
+{0x91, 0x04,}, //In_Adt_BgainMin
+{0x92, 0x00,}, //In_Adt_BgainMin_n01
+{0x93, 0x0d,}, //In_Adt_BgainMax
+{0x94, 0x80,}, //In_Adt_BgainMax_n01
 
-{0x95, 0x04,},//Manual_Adt_RgainMin
-{0x96, 0x00,},//Manual_Adt_RgainMin_n01
-{0x97, 0x0d,},//Manual_Adt_RgainMax
-{0x98, 0x00,},//Manual_Adt_RgainMax_n01
-{0x99, 0x04,},//Manual_Adt_GgainMin
-{0x9a, 0x00,},//Manual_Adt_GgainMin_n01
+{0x95, 0x04,}, //Manual_Adt_RgainMin
+{0x96, 0x00,}, //Manual_Adt_RgainMin_n01
+{0x97, 0x0d,}, //Manual_Adt_RgainMax
+{0x98, 0x00,}, //Manual_Adt_RgainMax_n01
+{0x99, 0x04,}, //Manual_Adt_GgainMin
+{0x9a, 0x00,}, //Manual_Adt_GgainMin_n01
 {0x9b, 0x04,}, //Manual_Adt_GgainMax
 {0x9c, 0x80,}, //Manual_Adt_GgainMax_n01
-{0x9d, 0x04,},//Manual_Adt_BgainMin
-{0x9e, 0x00,},//Manual_Adt_BgainMin_n01
-{0x9f, 0x0b,},//Manual_Adt_BgainMax
-{0xa0, 0x00,},//Manual_Adt_BgainMax_n01
+{0x9d, 0x04,}, //Manual_Adt_BgainMin
+{0x9e, 0x00,}, //Manual_Adt_BgainMin_n01
+{0x9f, 0x0b,}, //Manual_Adt_BgainMax
+{0xa0, 0x00,}, //Manual_Adt_BgainMax_n01
 
 {0x0e, 0x00,}, //burst end
 
-{0x03, 0xC8,},
+{0x03, 0xc8,},
+{0x17, 0x00,}, //AWB Speed
+{0x18, 0x11,},
+{0x21, 0x00,},
+{0x22, 0x01,},
 {0x11, 0xC3,},	//AWB reset
 
 
@@ -28762,75 +28761,75 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x9d, 0x85,},	// BLC_ofs_gr_Dark2
 {0x9e, 0x85,},	// BLC_ofs_gb_Dark2
 
-{0x9f, 0x00,},//LSC Out_L ofs G
-{0xa0, 0x00,},//LSC Out_L ofs B
-{0xa1, 0x00,},//LSC Out_L ofs R
-{0xa2, 0x80,},//LSC Out_L Gain G
-{0xa3, 0x82,},//LSC Out_L Gain B
-{0xa4, 0x88,},//LSC Out_L Gain R
+{0x9f, 0x00,},	//LSC Out_L ofs G
+{0xa0, 0x00,},	//LSC Out_L ofs B
+{0xa1, 0x00,},	//LSC Out_L ofs R
+{0xa2, 0x80,},	//LSC Out_L Gain G
+{0xa3, 0x82,},	//LSC Out_L Gain B
+{0xa4, 0x84,},//LSC Out_L Gain R
 
-{0xa5, 0x00,},//LSC Out_M ofs G
-{0xa6, 0x00,},//LSC Out_M ofs B
-{0xa7, 0x00,},//LSC Out_M ofs R
-{0xa8, 0x80,},//LSC Out_M Gain G
-{0xa9, 0x84,},//LSC Out_M Gain B
-{0xaa, 0x85,},//LSC Out_M Gain R
+{0xa5, 0x00,},	//LSC Out_M ofs G
+{0xa6, 0x00,},	//LSC Out_M ofs B
+{0xa7, 0x00,},	//LSC Out_M ofs R
+{0xa8, 0x80,},	//LSC Out_M Gain G
+{0xa9, 0x82,},//LSC Out_M Gain B
+{0xaa, 0x7e,},	//LSC Out_M Gain R
 
-{0xab, 0x00,},//LSC Out_H ofs G
-{0xac, 0x00,},//LSC Out_H ofs B
-{0xad, 0x00,},//LSC Out_H ofs R
-{0xae, 0x80,},//LSC Out_H Gain G
-{0xaf, 0x86,},//LSC Out_H Gain B
-{0xb0, 0x7e,},//LSC Out_H Gain R
+{0xab, 0x00,},	//LSC Out_H ofs G
+{0xac, 0x00,},	//LSC Out_H ofs B
+{0xad, 0x00,},	//LSC Out_H ofs R
+{0xae, 0x80,},	//LSC Out_H Gain G
+{0xaf, 0x84,},//LSC Out_H Gain B
+{0xb0, 0x78,},//LSC Out_H Gain R
 
-{0xb1, 0x00,},// LSC0_Ind_LowTmp        offset g
-{0xb2, 0x00,},// LSC1_Ind_LowTmp        offset b
-{0xb3, 0x00,},// LSC2_Ind_LowTmp        offset r
-{0xb4, 0x80,},// LSC3_Ind_LowTmp        gain g
-{0xb5, 0x80,},// LSC4_Ind_LowTmp        gain b
-{0xb6, 0x84,},// LSC5_Ind_LowTmp        gain r
+{0xb1, 0x00,},	// LSC0_Ind_LowTmp        offset g
+{0xb2, 0x00,},	// LSC1_Ind_LowTmp        offset b
+{0xb3, 0x00,},	// LSC2_Ind_LowTmp        offset r
+{0xb4, 0x80,},	// LSC3_Ind_LowTmp        gain g
+{0xb5, 0x80,},	// LSC4_Ind_LowTmp        gain b
+{0xb6, 0x88,},	// LSC5_Ind_LowTmp        gain r
 
-{0xb7, 0x00,},// LSC0_Ind_MiddleTmp     offset g
-{0xb8, 0x00,},// LSC1_Ind_MiddleTmp     offset b
-{0xb9, 0x00,},// LSC2_Ind_MiddleTmp     offset r
-{0xba, 0x80,},// LSC3_Ind_MiddleTmp     gain g
-{0xbb, 0x80,},// LSC4_Ind_MiddleTmp     gain b
-{0xbc, 0x78,},// LSC5_Ind_MiddleTmp     gain r
+{0xb7, 0x00,},	// LSC0_Ind_MiddleTmp     offset g
+{0xb8, 0x00,},	// LSC1_Ind_MiddleTmp     offset b
+{0xb9, 0x00,},	// LSC2_Ind_MiddleTmp     offset r
+{0xba, 0x80,},	// LSC3_Ind_MiddleTmp     gain g
+{0xbb, 0x80,},	// LSC4_Ind_MiddleTmp     gain b
+{0xbc, 0x7e,},	// LSC5_Ind_MiddleTmp     gain r
 
-{0xbd, 0x00,},// LSC0_Ind_HighTmp       offset g
-{0xbe, 0x00,},// LSC1_Ind_HighTmp       offset b
-{0xbf, 0x00,},// LSC2_Ind_HighTmp       offset r
-{0xc0, 0x80,},// LSC3_Ind_HighTmp       gain g
-{0xc1, 0x80,},// LSC4_Ind_HighTmp       gain b
-{0xc2, 0x7a,},// LSC5_Ind_HighTmp       gain r
+{0xbd, 0x00,},	// LSC0_Ind_HighTmp       offset g
+{0xbe, 0x00,},	// LSC1_Ind_HighTmp       offset b
+{0xbf, 0x00,},	// LSC2_Ind_HighTmp       offset r
+{0xc0, 0x80,},	// LSC3_Ind_HighTmp       gain g
+{0xc1, 0x80,},	// LSC4_Ind_HighTmp       gain b
+{0xc2, 0x7e,},// LSC5_Ind_HighTmp       gain r
 
 {0xc3, 0x00,},	// LSC0_Dark1_LowTmp      offset g
 {0xc4, 0x00,},	// LSC1_Dark1_LowTmp      offset b
 {0xc5, 0x00,},	// LSC2_Dark1_LowTmp      offset r
 {0xc6, 0x68,},	// LSC3_Dark1_LowTmp      gain g
-{0xc7, 0x65,},// LSC4_Dark1_LowTmp      gain b
-{0xc8, 0x62,},// LSC5_Dark1_LowTmp      gain r
+{0xc7, 0x68,},	// LSC4_Dark1_LowTmp      gain b
+{0xc8, 0x68,},	// LSC5_Dark1_LowTmp      gain r
 
 {0xc9, 0x00,},	// LSC0_Dark1_MiddleTmp   offset g
 {0xca, 0x00,},	// LSC1_Dark1_MiddleTmp   offset b
 {0xcb, 0x00,},	// LSC2_Dark1_MiddleTmp   offset r
 {0xcc, 0x68,},	// LSC3_Dark1_MiddleTmp   gain g
-{0xcd, 0x65,},// LSC4_Dark1_MiddleTmp   gain b
-{0xce, 0x62,},// LSC5_Dark1_MiddleTmp   gain r
+{0xcd, 0x68,},	// LSC4_Dark1_MiddleTmp   gain b
+{0xce, 0x68,},	// LSC5_Dark1_MiddleTmp   gain r
 
 {0xcf, 0x00,},	// LSC0_Dark1_HighTmp   offset g
 {0xd0, 0x00,},	// LSC1_Dark1_HighTmp   offset b
 {0xd1, 0x00,},	// LSC2_Dark1_HighTmp   offset r
 {0xd2, 0x68,},	// LSC3_Dark1_HighTmp   gain g
-{0xd3, 0x65,},// LSC4_Dark1_HighTmp   gain b
-{0xd4, 0x62,},// LSC5_Dark1_HighTmp   gain r
+{0xd3, 0x68,},	// LSC4_Dark1_HighTmp   gain b
+{0xd4, 0x68,},	// LSC5_Dark1_HighTmp   gain r
 
 {0xd5, 0x00,},	// LSC0_Dark2           offset g
 {0xd6, 0x00,},	// LSC1_Dark2           offset b
 {0xd7, 0x00,},	// LSC2_Dark2           offset r
 {0xd8, 0x68,},	// LSC3_Dark2           gain g
-{0xd9, 0x65,},// LSC4_Dark2           gain b
-{0xda, 0x62,},// LSC5_Dark2           gain r
+{0xd9, 0x68,},	// LSC4_Dark2           gain b
+{0xda, 0x68,},	// LSC5_Dark2           gain r
 
 {0xdb, 0x2f,}, //CMCSIGN_Out
 {0xdc, 0x55,}, //CMC_Out_00
@@ -30366,7 +30365,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x22, 0x40,},
 {0x23, 0x37,}, //Outdoor 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xbf,}, //Outdoor 1270 // Bayer Sharpness ENB add 720p
+{0x25, 0x9f,}, //Outdoor 1270 // Bayer Sharpness ENB add 720p
 {0x26, 0x71,},
 {0x27, 0x1a,}, //Outdoor 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -31244,7 +31243,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x22, 0x40,},
 {0x23, 0x37,}, //Indoor 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xbf,}, //Indoor 1270 // Bayer Sharpness ENB add
+{0x25, 0x9f,}, //Indoor 1270 // Bayer Sharpness ENB add
 {0x26, 0x71,},
 {0x27, 0x1a,}, //Indoor 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -32122,7 +32121,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x22, 0x40,},
 {0x23, 0x36,}, //Dark1 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xa1,}, //Dark1 1270 // Bayer Sharpness ENB add 720p
+{0x25, 0x81,}, //Dark1 1270 // Bayer Sharpness ENB add 720p
 {0x26, 0x71,},
 {0x27, 0x07,}, //Dark1 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -33000,7 +32999,7 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_HD_01[] = {
 {0x22, 0x40,},
 {0x23, 0x36,}, //Dark2 1240 add 720p
 {0x24, 0x70,},
-{0x25, 0xa1,}, //Dark2 1270 // Bayer Sharpness ENB add 720p
+{0x25, 0x81,}, //Dark2 1270 // Bayer Sharpness ENB add 720p
 {0x26, 0x71,},
 {0x27, 0x07,}, //Dark2 1271 //Bayer HPF Gain
 {0x28, 0x72,},
@@ -33724,9 +33723,6 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_30fps[] = {
 ///////////////////////////////////////////
 {0x03, 0xc7,},
 {0x15, 0x80,},	//Patch Weight Off B[6]
-{0x21, 0x20,},
-{0x22, 0x20,},
-{0x23, 0x20,},
 {0x36, 0x1e,},	//Max 30fps
 {0x37, 0x1e,},	//Max 30fps
 
@@ -33811,9 +33807,6 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_30fps_01[] = {
 ///////////////////////////////////////////
 {0x03, 0xc7,},
 {0x15, 0x80,},	//Patch Weight Off B[6]
-{0x21, 0x20,},
-{0x22, 0x20,},
-{0x23, 0x20,},
 {0x36, 0x1e,},	//Max 30fps
 {0x37, 0x1e,},	//Max 30fps
 
@@ -33889,9 +33882,6 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_modeOff[] = {
 ///////////////////////////////////////////
 {0x03, 0xc7,},
 {0x15, 0xc0,},	//Patch Weight On B[6]
-{0x21, 0x49,},
-{0x22, 0x53,},
-{0x23, 0x78,},
 {0x36, 0x08,},	//Max 8fps
 {0x37, 0x08,},	//Max 8fps
 
@@ -33971,9 +33961,6 @@ static struct msm_camera_i2c_reg_conf sr352_recording_50Hz_modeOff_01[] = {
 ///////////////////////////////////////////
 {0x03, 0xc7,},
 {0x15, 0xc0,},	//Patch Weight On B[6]
-{0x21, 0x49,},
-{0x22, 0x53,},
-{0x23, 0x78,},
 {0x36, 0x08,},	//Max 8fps
 {0x37, 0x08,},	//Max 8fps
 
@@ -36412,170 +36399,7 @@ static struct msm_camera_i2c_reg_conf sr352_stop_stream[] = {
 {0x03, 0x00,},
 };
 
-static struct msm_camera_i2c_reg_conf sr352_50hz_setting[] = {
 
-{0x03, 0x00,},
-{0x01, 0x00,},
-{0xff, 0x02,},
-
-{0x03, 0x20,},
-{0x10, 0xbd,}, //50hz bd, 60hz ad
-{0x20, 0x00,}, //Start ExpTime 120fps
-{0x21, 0x06,},
-{0x22, 0xd9,},
-{0x23, 0x20,},
-
-{0x03, 0xc1,},
-{0x10, 0x06,}, // ssd tranfer disable
-{0xff, 0x02,}, // 20ms
-
-{0x03, 0x00,},
-{0x01, 0x01,},	// Sleep on
-
-{0x03, 0xc1,},
-{0x10, 0x07,}, // ssd tranfer enable
-
-///////////////////////////////////////////////////////////////////////////////
-// C7 Page (AE)
-///////////////////////////////////////////////////////////////////////////////
-//Shutter Setting
-{0x03, 0xc7,},
-{0x10, 0x70,},	//AE Off (Band Off) 50hz 70, 60hz 50
-{0x12, 0x30,}, // Fast speed
-{0x15, 0xc0,}, // SSD Patch Weight Y Mean On
-
-{0x1e, 0x03,}, // Band1 Step
-{0x1f, 0x06,}, // Band2 Step
-{0x20, 0x08,}, // Band3 Step
-
-{0x21, 0x49,}, // Band1 Gain 30fps
-{0x22, 0x53,}, // Band2 Gain 15fps
-{0x23, 0x78,},// Band3 Gain 12fps
-
-{0x36, 0x08,}, // Max 8fps
-{0x37, 0x08,}, // Max 8fps
-
-{0x3d, 0x22,}, // YTh Lock, Unlock0
-
-{0x11, 0x01,}, // B[1]Initial Speed Up, B[0]AE Reset
-{0x70, 0x82,}, // 50hz 82, 60hz 02
-{0xff, 0x01,},
-{0x4C, 0x00,},//SW ExpMin	 = 8800
-{0x4D, 0x00,},
-{0x4E, 0x22,},
-{0x4F, 0x60,},
-
-{0x44, 0x00,}, //Start ExpTime 120fps
-{0x45, 0x06,},
-{0x46, 0xd9,},
-{0x47, 0x20,},
-
-{0xa7, 0x48,}, //Start ExpTime 120fps float
-{0xa8, 0xdb,},
-{0xa9, 0x24,},
-{0xaa, 0x00,},
-
-{0x03, 0x20,}, //HW ExpMin  = 8800
-{0x28, 0x00,},
-{0x29, 0x22,},
-{0x2A, 0x60,},
-
-{0x03, 0xc7,},
-{0x10, 0xf0,},	//AE On 50hz f0, 60hz d0
-
-};
-
-static struct msm_camera_i2c_reg_conf sr352_HD_50hz_setting[] = {
-
-{0x03, 0x00,},
-{0x01, 0x00,},
-{0xff, 0x02,},
-
-{0x03, 0x20,},
-{0x10, 0xbd,}, //50hz bd, 60hz ad
-{0x20, 0x00,}, //Start ExpTime 120fps // HD 86MHz
-{0x21, 0x05,},
-{0x22, 0x72,},
-{0x23, 0xba,},
-
-{0x03, 0xc1,},
-{0x10, 0x06,}, // ssd tranfer disable
-{0xff, 0x02,}, // 20ms
-
-{0x03, 0x00,},
-{0x01, 0x01,},	// Sleep on
-
-{0x03, 0xc1,},
-{0x10, 0x07,}, // ssd tranfer enable
-
-///////////////////////////////////////////////////////////////////////////////
-// C7 Page (AE)
-///////////////////////////////////////////////////////////////////////////////
-//Shutter Setting
-{0x03, 0xc7,},
-{0x10, 0x30,}, // AE Off (Band Off) 50hz 30, 60hz 10
-{0x12, 0x03,}, // Slow AE
-{0x15, 0xc0,}, // SSD Patch Weight Y Mean On
-
-{0x36, 0x18,}, // Max 24fps
-{0x37, 0x18,}, // Max 24fps
-
-{0x3d, 0x22,}, // YTh Lock, Unlock0
-
-{0x11, 0x01,}, // B[1]Initial Speed Up, B[0]AE Reset
-{0x70, 0x82,}, // 50hz 82, 60hz 02
-{0xff, 0x01,},
-{0x4C, 0x00,}, //SW ExpMin	 = 3700
-{0x4D, 0x00,},
-{0x4E, 0x0e,},
-{0x4F, 0x74,},
-
-{0x44, 0x00,}, //Start ExpTime 120fps
-{0x45, 0x05,},
-{0x46, 0x72,},
-{0x47, 0xba,},
-
-{0xa7, 0x48,}, //Start ExpTime 120fps flaot
-{0xa8, 0xae,},
-{0xa9, 0x57,},
-{0xaa, 0x40,},
-
-{0x03, 0x20,}, //HW ExpMin  = 3700
-{0x28, 0x00,},
-{0x29, 0x0e,},
-{0x2A, 0x74,},
-
-{0x03, 0xc7,},
-{0x10, 0xb0,},	//AE On (Band Off) 50hz b0, 60hz 90
-
-{0x03, 0x00,},
-{0x1e, 0x01,}, // frame update
-
-{0x03, 0x00,},
-{0x01, 0x00,},	// Sleep Off
-
-{0xff, 0x01,}, //delay 10ms
-
-};
-
-
-static struct msm_camera_i2c_reg_conf sr352_AEAWB_Lock_50Hz[] = {
-{0x03, 0xc7,},
-{0x10, 0x70,},	//AE Off 50hz 70, 60hz 50
-{0x03, 0xc8,},	//AWB Off
-{0x10, 0x52,},
-{0xff, 0x0a,}, //delay 100ms
-};
-
-static struct msm_camera_i2c_reg_conf sr352_AEAWB_Unlock_50Hz[] = {
-{0x03, 0xc7,},
-{0x10, 0xf0,},	//AE On 50hz f0, 60hz d0
-{0x03, 0xc8,},
-{0x10, 0xd2,}, //AWB On
-{0xff, 0x0a,}, //delay 100ms
-};
-
-#if defined(CONFIG_MACH_MATISSE3G_OPEN) || defined(CONFIG_MACH_MATISSEWIFI_OPEN)
 static struct msm_camera_i2c_reg_conf sr352_60hz_setting[] = {
 
 {0x03, 0x00,},
@@ -36647,22 +36471,6 @@ static struct msm_camera_i2c_reg_conf sr352_60hz_setting[] = {
 {0x03, 0xc7,},
 {0x10, 0xd0,},	//AE On 50hz f0, 60hz d0
 
-};
-
-static struct msm_camera_i2c_reg_conf sr352_AEAWB_Lock_60Hz[] = {
-{0x03, 0xc7,},
-{0x10, 0x50,},	//AE Off 50hz 70, 60hz 50
-{0x03, 0xc8,},	//AWB Off
-{0x10, 0x52,},
-{0xff, 0x0a,}, //delay 100ms
-};
-
-static struct msm_camera_i2c_reg_conf sr352_AEAWB_Unlock_60Hz[] = {
-{0x03, 0xc7,},
-{0x10, 0xd0,},	//AE On 50hz f0, 60hz d0
-{0x03, 0xc8,},
-{0x10, 0xd2,}, //AWB On
-{0xff, 0x0a,}, //delay 100ms
 };
 
 static struct msm_camera_i2c_reg_conf sr352_HD_60hz_setting[] = {
@@ -36737,4 +36545,19 @@ static struct msm_camera_i2c_reg_conf sr352_HD_60hz_setting[] = {
 {0xff, 0x01,}, //delay 10ms
 
 };
-#endif
+static struct msm_camera_i2c_reg_conf sr352_AEAWB_Lock_60Hz[] = {
+{0x03, 0xc7,},
+{0x10, 0x50,},	//AE Off 50hz 70, 60hz 50
+{0x03, 0xc8,},	//AWB Off
+{0x10, 0x52,},
+{0xff, 0x0a,}, //delay 100ms
+};
+
+static struct msm_camera_i2c_reg_conf sr352_AEAWB_Unlock_60Hz[] = {
+{0x03, 0xc7,},
+{0x10, 0xd0,},	//AE On 50hz f0, 60hz d0
+{0x03, 0xc8,},
+{0x10, 0xd2,}, //AWB On
+{0xff, 0x0a,}, //delay 100ms
+};
+
