@@ -248,6 +248,7 @@ extern void fsa9485_checkandhookaudiodockfornoise(int value);
 extern struct class *sec_class;
 extern struct fsa9485_platform_data fsa9485_pdata;
 extern int check_jig_state(void);
+extern int check_mmdock_connect(void);
 extern int poweroff_charging;
 
 #endif /* _FSA9485_H_ */

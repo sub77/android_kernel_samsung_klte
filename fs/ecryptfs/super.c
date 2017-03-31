@@ -174,6 +174,9 @@ static int ecryptfs_show_options(struct seq_file *m, struct dentry *root)
 	if (mount_crypt_stat->flags & ECRYPTFS_MOUNT_SDP_ENABLED){
 		seq_printf(m, ",sdp_enabled");
 	}
+	if (mount_crypt_stat->partition_id >= 0){
+	    seq_printf(m, ",partition_id=%d", mount_crypt_stat->partition_id);
+	}
 #endif
 	mutex_unlock(&mount_crypt_stat->global_auth_tok_list_mutex);
 
@@ -204,18 +207,6 @@ static int ecryptfs_show_options(struct seq_file *m, struct dentry *root)
 
 	return 0;
 }
-#ifdef CONFIG_SDP
-static int ecryptfs_drop_inode(struct inode *inode) {
-	struct ecryptfs_crypt_stat *crypt_stat =
-		    &ecryptfs_inode_to_private(inode)->crypt_stat;
-
-	if (crypt_stat->flags & ECRYPTFS_DEK_IS_SENSITIVE) {
-		ecryptfs_printk(KERN_INFO, "dropping sensitive inode\n");
-		return 1;
-	}
-	return generic_drop_inode(inode);
-}
-#endif
 
 const struct super_operations ecryptfs_sops = {
 	.alloc_inode = ecryptfs_alloc_inode,
@@ -223,8 +214,5 @@ const struct super_operations ecryptfs_sops = {
 	.statfs = ecryptfs_statfs,
 	.remount_fs = NULL,
 	.evict_inode = ecryptfs_evict_inode,
-	.show_options = ecryptfs_show_options,
-#ifdef CONFIG_SDP
-	.drop_inode = ecryptfs_drop_inode,
-#endif
+	.show_options = ecryptfs_show_options
 };

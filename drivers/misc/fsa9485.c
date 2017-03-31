@@ -46,6 +46,9 @@ EXPORT_SYMBOL(uart_connecting);
 int detached_status;
 EXPORT_SYMBOL(detached_status);
 
+static int mmdock_connect;
+static int mmdock_flag;
+
 static int jig_state;
 
 struct fsa9485_usbsw {
@@ -764,6 +767,85 @@ static int fsa9485_detect_lanhub(struct fsa9485_usbsw *usbsw) {
 }
 #endif
 
+void fsa9485_mmdock_attach(void){
+
+	int ret;
+	struct i2c_client *client = local_usbsw->client;
+    struct fsa9485_platform_data *pdata = local_usbsw->pdata;
+
+	dev_info(&client->dev, "MM dock connect\n");
+	mmdock_flag = 1;
+	ret = i2c_smbus_write_byte_data(client,FSA9485_REG_MANSW1, SW_DHOST);
+	if (ret < 0)
+		dev_err(&client->dev,"%s: err %d\n", __func__, ret);
+	ret = i2c_smbus_read_byte_data(client,
+					FSA9485_REG_CTRL);
+	if (ret < 0)
+		dev_err(&client->dev,
+				"%s: err %d\n", __func__, ret);
+	ret = i2c_smbus_write_byte_data(client,
+			FSA9485_REG_CTRL, ret & ~CON_MANUAL_SW);
+	if (ret < 0)
+		dev_err(&client->dev,
+				"%s: err %d\n", __func__, ret);
+#if defined(CONFIG_VIDEO_MHL_V2)
+	if (pdata->mhl_cb)
+		pdata->mhl_cb(FSA9485_ATTACHED);
+#endif
+	if (pdata->otg_cb)
+		pdata->otg_cb(FSA9485_ATTACHED);
+
+	if (pdata->mmdock_cb)
+		pdata->mmdock_cb(FSA9485_ATTACHED);
+
+}
+
+void fsa9485_mmdock_detach(void){
+
+	int ret;
+	struct i2c_client *client = local_usbsw->client;
+    struct fsa9485_platform_data *pdata = local_usbsw->pdata;
+
+	dev_info(&client->dev, "MM dock disconnect\n");
+	mmdock_flag = 0;
+
+	ret = i2c_smbus_read_byte_data(client,FSA9485_REG_CTRL);
+	if (ret < 0)
+		dev_err(&client->dev,"%s: err %d\n", __func__, ret);
+	ret = i2c_smbus_write_byte_data(client,FSA9485_REG_CTRL,ret | CON_MANUAL_SW);
+	if (ret < 0)
+		dev_err(&client->dev,"%s: err %d\n", __func__, ret);
+	if (pdata->otg_cb)
+		pdata->otg_cb(FSA9485_DETACHED);
+
+#if defined(CONFIG_VIDEO_MHL_V2)
+	if (pdata->mhl_cb)
+		pdata->mhl_cb(FSA9485_DETACHED);
+#endif
+
+	if (pdata->mmdock_cb)
+		pdata->mmdock_cb(FSA9485_DETACHED);
+
+}
+
+void fsa9485_mmdock_vbus_check(bool vbus_status)
+{
+	if(vbus_status){
+		if(mmdock_connect ==1 && mmdock_flag ==0)
+			fsa9485_mmdock_attach();
+	}
+	else{
+		if(mmdock_connect == 1 && mmdock_flag ==1)
+			fsa9485_mmdock_detach();
+	}
+}
+EXPORT_SYMBOL(fsa9485_mmdock_vbus_check);
+
+int check_mmdock_connect(void){
+	return mmdock_connect;
+}
+EXPORT_SYMBOL(check_mmdock_connect);
+
 static int fsa9485_detect_dev(struct fsa9485_usbsw *usbsw)
 {
 	int device_type, ret;
@@ -814,6 +896,7 @@ static int fsa9485_detect_dev(struct fsa9485_usbsw *usbsw)
 			ret = i2c_smbus_write_byte_data(client, FSA9485_REG_CTRL, ret & ~CON_MANUAL_SW);
 			if (ret < 0)
 				dev_err(&client->dev, "%s: err %d\n", __func__, ret);
+			mmdock_connect = 1;
 		}
 	}
 
@@ -1015,34 +1098,8 @@ static int fsa9485_detect_dev(struct fsa9485_usbsw *usbsw)
 #endif
 		/*MMDock*/
 		} else if ((dev2 & DEV_MMDOCK) && (dev3 & 0x02)) {
-			usbsw->adc = adc;
-			dev_info(&client->dev, "MM dock connect\n");
-			usbsw->mansw = SW_DHOST;
-			ret = i2c_smbus_write_byte_data(client,
-					FSA9485_REG_MANSW1, SW_DHOST);
-			if (ret < 0)
-				dev_err(&client->dev,
-						"%s: err %d\n", __func__, ret);
-			ret = i2c_smbus_read_byte_data(client,
-					FSA9485_REG_CTRL);
-			if (ret < 0)
-				dev_err(&client->dev,
-						"%s: err %d\n", __func__, ret);
-			ret = i2c_smbus_write_byte_data(client,
-					FSA9485_REG_CTRL, ret & ~CON_MANUAL_SW);
-			if (ret < 0)
-				dev_err(&client->dev,
-						"%s: err %d\n", __func__, ret);
-
-#if defined(CONFIG_VIDEO_MHL_V2)
-			if (pdata->mhl_cb)
-				pdata->mhl_cb(FSA9485_ATTACHED);
-#endif
-			if (pdata->otg_cb)
-				pdata->otg_cb(FSA9485_ATTACHED);
-
-			if (pdata->mmdock_cb)
-				pdata->mmdock_cb(FSA9485_ATTACHED);
+			if(mmdock_flag == 0)
+				fsa9485_mmdock_attach();
 
 		} else if (dev2 & DEV_AUDIO_DOCK) {
 			usbsw->adc = adc;
@@ -1297,33 +1354,10 @@ static int fsa9485_detect_dev(struct fsa9485_usbsw *usbsw)
 			if (pdata->charge_cb)
 				pdata->charge_cb(FSA9485_DETACHED);
 		/*MM DOCK*/
-		}else if (usbsw->adc == 0x15) {
-			dev_info(&client->dev, "MM dock disconnect\n");
-
-			ret = i2c_smbus_read_byte_data(client,
-						FSA9485_REG_CTRL);
-			if (ret < 0)
-				dev_err(&client->dev,
-					"%s: err %d\n", __func__, ret);
-			ret = i2c_smbus_write_byte_data(client,
-					FSA9485_REG_CTRL,
-					ret | CON_MANUAL_SW);
-			if (ret < 0)
-				dev_err(&client->dev,
-					"%s: err %d\n", __func__, ret);
-
-			if (pdata->otg_cb)
-				pdata->otg_cb(FSA9485_DETACHED);
-
-#if defined(CONFIG_VIDEO_MHL_V2)
-			if (pdata->mhl_cb)
-				pdata->mhl_cb(FSA9485_DETACHED);
-#endif
-
-			if (pdata->mmdock_cb)
-				pdata->mmdock_cb(FSA9485_DETACHED);
-
-			usbsw->adc = 0;
+		}else if (mmdock_connect == 1) {
+			mmdock_connect = 0;
+			if(mmdock_flag == 1)
+				fsa9485_mmdock_detach();
 
 		} else if (usbsw->dev3 & DEV_VBUS_DEBOUNCE) {
 			dev_info(&client->dev,

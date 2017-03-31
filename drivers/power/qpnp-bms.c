@@ -2369,7 +2369,6 @@ skip_limits:
 	rc_new_uah = (params->fcc_uah * pc_new) / 100;
 	soc_new = (rc_new_uah - params->cc_uah - params->uuc_uah)*100
 					/ (params->fcc_uah - params->uuc_uah);
-	soc_new = bound_soc(soc_new);
 
 	/*
 	 * if soc_new is ZERO force it higher so that phone doesnt report soc=0
@@ -2684,6 +2683,8 @@ static int calculate_state_of_charge(struct qpnp_bms_chip *chip,
     /* always clamp soc due to BMS hw/sw immaturities */
 	new_calculated_soc = clamp_soc_based_on_voltage(chip,
 					new_calculated_soc);
+
+	new_calculated_soc = bound_soc(new_calculated_soc);
 	/*
 	 * If the battery is full, configure the cc threshold so the system
 	 * wakes up after SoC changes
@@ -4385,7 +4386,14 @@ static inline int bms_read_properties(struct qpnp_bms_chip *chip)
 		pr_err("Missing required properties.\n");
 		return rc;
     }
-  #if defined(CONFIG_SEC_MATISSE_PROJECT) || defined(CONFIG_SEC_T10_PROJECT)
+
+  #if defined(CONFIG_MACH_MATISSE3G_OPEN)
+      chip->use_ocv_thresholds = 1;
+      chip->ocv_low_threshold_uv = 3500000;
+      chip->ocv_high_threshold_uv = 3850000;
+      chip->adjust_soc_low_threshold = 2;
+      chip->shutdown_soc_valid_limit = 70;
+  #elif defined(CONFIG_SEC_MATISSE_PROJECT) || defined(CONFIG_SEC_T10_PROJECT)
       chip->use_ocv_thresholds = 1;
       chip->ocv_low_threshold_uv = 3400000;
       chip->ocv_high_threshold_uv = 3850000;

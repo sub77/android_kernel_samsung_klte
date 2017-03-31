@@ -341,6 +341,7 @@ struct mdss_dsi_ctrl_pdata {
 	int bklt_max;
 	int new_fps;
 	int pwm_enabled;
+	bool dmap_iommu_map;
 #if defined(CONFIG_CABC_TUNING_HX8394C)
 	int current_cabc_duty;
 #endif

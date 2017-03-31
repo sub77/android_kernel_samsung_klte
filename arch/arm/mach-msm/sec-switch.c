@@ -1692,6 +1692,7 @@ int max77888_muic_charger_cb(enum cable_type_muic cable_type)
 	case CABLE_TYPE_SMARTDOCK_MUIC:
 	case CABLE_TYPE_SMARTDOCK_TA_MUIC:
 	case CABLE_TYPE_JIG_UART_OFF_VB_MUIC:
+	case CABLE_TYPE_MMDOCK_MUIC:
 	case CABLE_TYPE_INCOMPATIBLE_MUIC:
 		is_cable_attached = true;
 		break;
@@ -1766,6 +1767,8 @@ int max77888_muic_charger_cb(enum cable_type_muic cable_type)
 	case CABLE_TYPE_CHARGING_CABLE_MUIC:
 		current_cable_type = POWER_SUPPLY_TYPE_POWER_SHARING;
 		break;
+	case CABLE_TYPE_MMDOCK_MUIC:
+		return 0;
 	default:
 		pr_err("%s: invalid type for charger:%d\n",
 				__func__, cable_type);

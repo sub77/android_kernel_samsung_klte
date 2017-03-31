@@ -21,6 +21,7 @@
 #define SHORT_BATTERY_STANDARD	100
 #if defined(CONFIG_USB_SWITCH_FSA9485)
 extern int mhl_connection_state(void);
+extern void fsa9485_mmdock_vbus_check(bool vbus_status);
 #endif
 
 #if defined(CONFIG_EXTCON)
@@ -1867,6 +1868,12 @@ void sec_bat_check_cable_result_callback(struct device *dev,
 int sec_bat_check_cable_callback(struct sec_battery_info *battery)
 {
 	union power_supply_propval value;
+
+#ifdef CONFIG_USB_SWITCH_FSA9485
+	bool ta_status;
+	ta_status = gpio_get_value_cansleep(battery->pdata->ta_irq_gpio) ? false : true;
+	fsa9485_mmdock_vbus_check(ta_status);
+#endif
 
 	if (battery->pdata->ta_irq_gpio == 0) {
 		pr_err("%s: ta_int_gpio is 0 or not assigned yet(cable_type(%d))\n",

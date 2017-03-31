@@ -1043,9 +1043,8 @@ static int qseecom_load_app(struct qseecom_dev_handle *data, void __user *argp)
 		}
 		entry->app_id = app_id;
 		entry->ref_cnt = 1;
-		memset((void *)entry->app_name, 0, MAX_APP_NAME_SIZE);
-		memcpy((void *)entry->app_name,
-			(void *)load_img_req.img_name, MAX_APP_NAME_SIZE);
+		memcpy(entry->app_name, load_img_req.img_name,
+					MAX_APP_NAME_SIZE);
 		/* Deallocate the handle */
 		if (!IS_ERR_OR_NULL(ihandle))
 			ion_free(qseecom.ion_clnt, ihandle);
@@ -1059,9 +1058,8 @@ static int qseecom_load_app(struct qseecom_dev_handle *data, void __user *argp)
 		(char *)(load_img_req.img_name));
 	}
 	data->client.app_id = app_id;
-	memset((void *)data->client.app_name, 0, MAX_APP_NAME_SIZE);
-	memcpy((void *)data->client.app_name,
-		(void *)load_img_req.img_name, MAX_APP_NAME_SIZE);
+	memcpy(data->client.app_name, load_img_req.img_name,
+					MAX_APP_NAME_SIZE);
 	load_img_req.app_id = app_id;
 	if (copy_to_user(argp, &load_img_req, sizeof(load_img_req))) {
 		pr_err("copy_to_user failed\n");
@@ -1119,8 +1117,8 @@ static int qseecom_unload_app(struct qseecom_dev_handle *data,
 	bool found_dead_app = false;
 
 	if (!memcmp(data->client.app_name, "keymaste", strlen("keymaste"))) {
-		pr_warn("Do not unload keymaster app from tz\n");
-		return 0;
+		pr_debug("Do not unload keymaster app from tz\n");
+		goto unload_exit;
 	}
 
 	if (data->client.app_id > 0) {
@@ -1215,6 +1213,7 @@ static int qseecom_unload_app(struct qseecom_dev_handle *data,
 		spin_unlock_irqrestore(&qseecom.registered_app_list_lock,
 								flags1);
 	}
+unload_exit:
 	qseecom_unmap_ion_allocated_memory(data);
 	data->released = true;
 	return ret;
@@ -1403,9 +1402,8 @@ static int __validate_send_cmd_inputs(struct qseecom_dev_handle *data,
 		pr_err("Client or client handle is not initialized\n");
 		return -EINVAL;
 	}
-
-	if (((req->cmd_req_buf == NULL) && (req->resp_len != 0)) ||
-				(req->resp_buf == NULL)) {
+	if (((req->resp_buf == NULL) && (req->resp_len != 0)) ||
+						(req->cmd_req_buf == NULL)) {
 		pr_err("cmd buffer or response buffer is null\n");
 		return -EINVAL;
 	}
@@ -1415,23 +1413,19 @@ static int __validate_send_cmd_inputs(struct qseecom_dev_handle *data,
 		pr_err("cmd buffer address not within shared bufffer\n");
 		return -EINVAL;
 	}
-
-
-	if (((uintptr_t)req->cmd_req_buf < 
-		data->client.user_virt_sb_base) ||
-	    ((uintptr_t)req->cmd_req_buf >=
-	    (data->client.user_virt_sb_base + data->client.sb_length))) {
+	if (((uintptr_t)req->resp_buf <
+				data->client.user_virt_sb_base)  ||
+		((uintptr_t)req->resp_buf >=
+		(data->client.user_virt_sb_base + data->client.sb_length))) {
 		pr_err("response buffer address not within shared bufffer\n");
 		return -EINVAL;
 	}
-
 	if ((req->cmd_req_len == 0) ||
 		(req->cmd_req_len > data->client.sb_length) ||
 		(req->resp_len > data->client.sb_length)) {
-		pr_err("cmd buffer length or response buffer length not valid\n");
+		pr_err("cmd buf length or response buf length not valid\n");
 		return -EINVAL;
 	}
-
 	if (req->cmd_req_len > UINT_MAX - req->resp_len) {
 		pr_err("Integer overflow detected in req_len & rsp_len\n");
 		return -EINVAL;
@@ -1441,7 +1435,7 @@ static int __validate_send_cmd_inputs(struct qseecom_dev_handle *data,
 		pr_debug("Not enough memory to fit cmd_buf.\n");
 		pr_debug("resp_buf. Required: %u, Available: %zu\n",
 				(req->cmd_req_len + req->resp_len),
-				data->client.sb_length);
+					data->client.sb_length);
 		return -ENOMEM;
 	}
 	if ((uintptr_t)req->cmd_req_buf > (ULONG_MAX - req->cmd_req_len)) {
@@ -1468,7 +1462,7 @@ static int __validate_send_cmd_inputs(struct qseecom_dev_handle *data,
 	}
 	return 0;
 }
- 
+
 static int __qseecom_send_cmd(struct qseecom_dev_handle *data,
 				struct qseecom_send_cmd_req *req)
 {
@@ -1489,8 +1483,8 @@ static int __qseecom_send_cmd(struct qseecom_dev_handle *data,
 		name_len = min(strlen(data->client.app_name),
 				strlen(ptr_app->app_name));
 		if ((ptr_app->app_id == data->client.app_id) &&
-			 (!memcmp((void *)ptr_app->app_name,
-				(void *)data->client.app_name, name_len))) {
+			 (!memcmp(ptr_app->app_name,
+				data->client.app_name, name_len))) {
 			found_app = true;
 			break;
 		}
@@ -1705,9 +1699,11 @@ static int __qseecom_update_cmd_buf(void *msg, bool cleanup,
 
 			if ((data->type != QSEECOM_LISTENER_SERVICE) &&
 					(cmd_req->ifd_data[i].fd > 0)) {
-				if (cmd_req->ifd_data[i].cmd_buf_offset >
-					cmd_req->cmd_req_len -
-					sizeof(struct qseecom_sg_entry)) {
+				if ((cmd_req->cmd_req_len <
+					SG_ENTRY_SZ * sg_ptr->nents) ||
+					(cmd_req->ifd_data[i].cmd_buf_offset >
+					(cmd_req->cmd_req_len -
+					SG_ENTRY_SZ * sg_ptr->nents))) {
 					pr_err("Invalid offset = 0x%x\n",
 						cmd_req->ifd_data[i].
 						cmd_buf_offset);
@@ -1715,9 +1711,11 @@ static int __qseecom_update_cmd_buf(void *msg, bool cleanup,
 				}
 			} else if ((data->type == QSEECOM_LISTENER_SERVICE) &&
 					(lstnr_resp->ifd_data[i].fd > 0)) {
-				if (lstnr_resp->ifd_data[i].cmd_buf_offset >
-							lstnr_resp->resp_len -
-					sizeof(struct qseecom_sg_entry)) {
+				if ((lstnr_resp->resp_len <
+					SG_ENTRY_SZ * sg_ptr->nents) ||
+					(lstnr_resp->ifd_data[i].cmd_buf_offset >
+					(lstnr_resp->resp_len -
+					SG_ENTRY_SZ * sg_ptr->nents))) {
 					pr_err("Invalid offset = 0x%x\n",
 						lstnr_resp->ifd_data[i].
 							cmd_buf_offset);
@@ -2214,6 +2212,11 @@ int qseecom_start_app(struct qseecom_handle **handle,
 	uint32_t len;
 	ion_phys_addr_t pa;
 
+	if (!app_name || strlen(app_name) >= MAX_APP_NAME_SIZE) {
+		pr_err("The app_name (%s) is not valid\n", app_name);
+		return -EINVAL;
+	}
+
 	*handle = kzalloc(sizeof(struct qseecom_handle), GFP_KERNEL);
 	if (!(*handle)) {
 		pr_err("failed to allocate memory for kernel client handle\n");
@@ -2294,6 +2297,7 @@ int qseecom_start_app(struct qseecom_handle **handle,
 		if (ret < 0)
 			goto err;
 		data->client.app_id = ret;
+		memcpy(data->client.app_name, app_name, MAX_APP_NAME_SIZE);
 	}
 	if (!found_app) {
 		entry = kmalloc(sizeof(*entry), GFP_KERNEL);
@@ -2304,6 +2308,7 @@ int qseecom_start_app(struct qseecom_handle **handle,
 		}
 		entry->app_id = ret;
 		entry->ref_cnt = 1;
+		memcpy(entry->app_name, app_name, MAX_APP_NAME_SIZE);
 
 		spin_lock_irqsave(&qseecom.registered_app_list_lock, flags);
 		list_add_tail(&entry->list, &qseecom.registered_app_list_head);
@@ -2367,6 +2372,9 @@ int qseecom_shutdown_app(struct qseecom_handle **handle)
 		return -EINVAL;
 	}
 	data =	(struct qseecom_dev_handle *) ((*handle)->dev);
+	mutex_lock(&app_access_lock);
+	atomic_inc(&data->ioctl_count);
+
 	spin_lock_irqsave(&qseecom.registered_kclient_list_lock, flags);
 	list_for_each_entry(kclient, &qseecom.registered_kclient_list_head,
 				list) {
@@ -2399,12 +2407,16 @@ int qseecom_shutdown_app(struct qseecom_handle **handle)
 		if (data->perf_enabled == true)
 			qsee_disable_clock_vote(data, CLK_DFAB);
 	}
+
+	atomic_dec(&data->ioctl_count);
+	mutex_unlock(&app_access_lock);
 	if (ret == 0) {
 		kzfree(data);
 		kzfree(*handle);
 		kzfree(kclient);
 		*handle = NULL;
 	}
+
 	return ret;
 }
 EXPORT_SYMBOL(qseecom_shutdown_app);
@@ -2934,8 +2946,14 @@ exit_disable_clock:
 
 exit_register_bus_bandwidth_needs:
 	if (qseecom.support_bus_scaling) {
+		int ret2;
 		mutex_lock(&qsee_bw_mutex);
-		ret = qseecom_unregister_bus_bandwidth_needs(data);
+		ret2 = qseecom_unregister_bus_bandwidth_needs(data);
+		pr_info("qseecom_unregister_bus_bandwidth_needs returned %d (ret=%d)\n", ret2, ret); // for debug
+		if (ret2) {
+			pr_err("qseecom_unregister_bus_bandwidth_needs returned %d\n", ret2);
+			ret = (ret || ret2);
+		}
 		mutex_unlock(&qsee_bw_mutex);
 	}
 
@@ -3056,9 +3074,8 @@ static int qseecom_query_app_loaded(struct qseecom_dev_handle *data,
 				&qseecom.registered_app_list_lock, flags);
 		data->client.app_id = ret;
 		query_req.app_id = ret;
-		memset((void *)data->client.app_name, 0, MAX_APP_NAME_SIZE);
-		memcpy((void *)data->client.app_name,
-				(void *)query_req.app_name, MAX_APP_NAME_SIZE);
+		memcpy(data->client.app_name, query_req.app_name,
+				MAX_APP_NAME_SIZE);
 		if (copy_to_user(argp, &query_req, sizeof(query_req))) {
 			pr_err("copy_to_user failed\n");
 			return -EFAULT;
@@ -4634,8 +4651,7 @@ static int qseecom_suspend(struct platform_device *pdev, pm_message_t state)
 	mutex_lock(&qsee_bw_mutex);
 	mutex_lock(&clk_access_lock);
 
-	if (qseecom.cumulative_mode != INACTIVE &&
-		qseecom.current_mode != INACTIVE) {
+	if (qseecom.current_mode != INACTIVE) {
 		ret = msm_bus_scale_client_update_request(
 			qseecom.qsee_perf_client, INACTIVE);
 		if (ret)

@@ -992,8 +992,6 @@ static ssize_t accessibility_store(struct device *dev,
 	}
 #ifndef	NEGATIVE_COLOR_USE_ACCESSIBILLITY
 	else if (cmd_value == COLOR_BLIND) {
-		if(mdnie_tun_state.accessibility == COLOR_BLIND)
-			return size;
 		mdnie_tun_state.accessibility = COLOR_BLIND;
 
 		#if defined (CONFIG_FB_MSM_MDSS_SHARP_HD_PANEL)

@@ -677,6 +677,7 @@ static int mdss_dsi_off(struct mdss_panel_data *pdata)
 			pr_err("%s: unable to config tlmm = %d\n",
 				__func__, ctrl_pdata->disp_te_gpio);
 			gpio_free(ctrl_pdata->disp_te_gpio);
+			mutex_unlock(&ctrl_pdata->mutex);
 			return -ENODEV;
 		}
 	}
@@ -692,17 +693,12 @@ static int mdss_dsi_off(struct mdss_panel_data *pdata)
 	mdss_dsi_phy_disable(ctrl_pdata);
 
 	mdss_dsi_clk_ctrl(ctrl_pdata, DSI_ALL_CLKS, 0);
-#if !defined(CONFIG_FB_MSM_MDSS_TC_DSI2LVDS_WXGA_PANEL) && !defined(CONFIG_FB_MSM_MDSS_SDC_WXGA_PANEL)
-	if(ctrl_pdata->ndx == DSI_CTRL_1) {
-#else
-	{
-#endif
-		ret = mdss_dsi_panel_power_on(pdata, 0);
-		if (ret) {
-			mutex_unlock(&ctrl_pdata->mutex);
-			pr_err("%s: Panel power off failed\n", __func__);
-			return ret;
-		}
+
+	ret = mdss_dsi_panel_power_on(pdata, 0);
+	if (ret) {
+		mutex_unlock(&ctrl_pdata->mutex);
+		pr_err("%s: Panel power off failed\n", __func__);
+		return ret;
 	}
 
 	if (panel_info->dynamic_fps
@@ -1695,7 +1691,8 @@ static int __devinit mdss_dsi_ctrl_probe(struct platform_device *pdev)
 	}
 #if !defined(CONFIG_FB_MSM8x26_MDSS_CHECK_LCD_CONNECTION) && \
 	!defined(CONFIG_FB_MSM_MIPI_SAMSUNG_TFT_VIDEO_WQXGA_PT_PANEL) && \
-	!defined(CONFIG_FB_MSM_MIPI_MAGNA_OCTA_VIDEO_WXGA_PT_DUAL_PANEL)
+	!defined(CONFIG_FB_MSM_MIPI_MAGNA_OCTA_VIDEO_WXGA_PT_DUAL_PANEL) && \
+	!defined(CONFIG_FB_MSM_MIPI_SAMSUNG_OCTA_CMD_WQHD_PT_PANEL)
 	if (get_lcd_attached() == 0) {
 		pr_err("%s : lcd is not attached..\n",__func__);
 		return -ENODEV;

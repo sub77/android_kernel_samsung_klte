@@ -573,7 +573,7 @@ static void mdss_dsi_panel_bl_ctrl(struct mdss_panel_data *pdata,
 }
 #if !defined(CONFIG_MACH_DEGASLTE_SPR)
 extern void pwm_backlight_enable(void);
-
+#endif
 static int samsung_dsi_panel_event_handler(int event)
 {
 	static int first_init = 0;
@@ -581,6 +581,7 @@ static int samsung_dsi_panel_event_handler(int event)
 		switch (event) {
 			case MDSS_EVENT_BACKLIGHT_LATE_ON:
 				if(msd.dstat.wait_bl_on) {
+#if !defined(CONFIG_MACH_DEGASLTE_SPR)
 					msleep(32);
 					if (gpio_is_valid(msd.bl_rst_gpio)) {
 						gpio_tlmm_config(GPIO_CFG(msd.bl_rst_gpio, 0,
@@ -596,6 +597,15 @@ static int samsung_dsi_panel_event_handler(int event)
 					}
 					pr_info("SS DSI Event Handler Backlight Late on");
 					}
+#else
+					if (!first_init) {
+						/* This value should be equal to what the Android Application 
+						set as default on CSC setting apply */
+						mdss_fb_set_backlight(msd.mfd, 102);
+						first_init = 1;
+					}
+					pr_info("SS DSI Event Handler Backlight Late on");
+#endif
 					msd.dstat.wait_bl_on = 0;
 				}
 			break;
@@ -606,7 +616,7 @@ static int samsung_dsi_panel_event_handler(int event)
 	}
 	return 0;
 }
-#endif
+
 static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 {
 	struct mdss_dsi_ctrl_pdata *ctrl = NULL;
@@ -1548,9 +1558,7 @@ static void err_fg_work_func(struct work_struct *work)
 		}
 		ctrl_pdata->ctrl_state |= CTRL_STATE_PANEL_INIT;
 	}
-#if !defined(CONFIG_MACH_DEGASLTE_SPR)
 	ctrl_pdata->event_handler(MDSS_EVENT_BACKLIGHT_LATE_ON);
-#endif
 	disable_irq_nosync(err_fg_gpio);
 	enable_irq(err_fg_gpio);
 	mdelay(20);
@@ -2019,9 +2027,9 @@ int mdss_dsi_panel_init(struct device_node *node,
 	ctrl_pdata->panel_data.set_backlight = mdss_dsi_panel_bl_ctrl;
 	ctrl_pdata->panel_reset = mdss_dsi_sdc_panel_reset;
 	ctrl_pdata->registered = mdss_dsi_panel_registered;
-#if  !defined(CONFIG_MACH_DEGASLTE_SPR)
+
 	ctrl_pdata->event_handler = samsung_dsi_panel_event_handler;
-#endif
+
 #if defined(CONFIG_LCD_CLASS_DEVICE)
 	lcd_device = lcd_device_register("panel", &pdev->dev, NULL,
 					&mdss_dsi_disp_props);

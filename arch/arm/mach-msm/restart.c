@@ -390,9 +390,6 @@ static void msm_restart_prepare(const char *cmd)
 			__raw_writel(0x77665507, restart_reason);
 			warm_reboot_set = 1;
 #endif
-		} else if (!strncmp(cmd, "diag", 4)
-				&& !kstrtoul(cmd + 4, 0, &value)) {
-			__raw_writel(0xabcc0000 | value, restart_reason);
 		} else {
 			__raw_writel(0x77665501, restart_reason);
 		}

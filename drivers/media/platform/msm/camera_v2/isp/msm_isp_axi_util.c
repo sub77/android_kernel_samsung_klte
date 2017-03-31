@@ -310,7 +310,8 @@ int msm_isp_axi_check_stream_state(
 				stream_info->state == PAUSED ||
 				stream_info->state == RESUME_PENDING ||
 				stream_info->state == RESUMING) &&
-				stream_cfg_cmd->cmd == STOP_STREAM) {
+				(stream_cfg_cmd->cmd == STOP_STREAM ||
+				stream_cfg_cmd->cmd == STOP_IMMEDIATELY)) {
 				stream_info->state = ACTIVE;
 			} else {
 				spin_unlock_irqrestore(
@@ -628,7 +629,9 @@ void msm_isp_axi_stream_update(struct vfe_device *vfe_dev)
 		}
 	}
 
-	if (vfe_dev->axi_data.pipeline_update == DISABLE_CAMIF) {
+	if (vfe_dev->axi_data.pipeline_update == DISABLE_CAMIF ||
+	    (vfe_dev->axi_data.pipeline_update ==
+		  DISABLE_CAMIF_IMMEDIATELY)) {
 		vfe_dev->hw_info->vfe_ops.stats_ops.
 			enable_module(vfe_dev, 0xFF, 0);
 		vfe_dev->axi_data.pipeline_update = NO_UPDATE;
@@ -829,6 +832,10 @@ enum msm_isp_camif_update_state
 			(cur_pix_stream_cnt - pix_stream_cnt) == 0 &&
 			stream_cfg_cmd->cmd == STOP_STREAM)
 			return DISABLE_CAMIF;
+		else if (cur_pix_stream_cnt &&
+			(cur_pix_stream_cnt - pix_stream_cnt) == 0 &&
+			stream_cfg_cmd->cmd == STOP_IMMEDIATELY)
+			return DISABLE_CAMIF_IMMEDIATELY;
 	}
 	return NO_UPDATE;
 }
@@ -941,9 +948,7 @@ static int msm_isp_axi_wait_for_cfg_done(struct vfe_device *vfe_dev,
 	spin_lock_irqsave(&vfe_dev->shared_data_lock, flags);
 	init_completion(&vfe_dev->stream_config_complete);
 	vfe_dev->axi_data.pipeline_update = camif_update;
-#if defined(CONFIG_MACH_AFYONLTE_TMO) \
-	|| defined(CONFIG_MACH_AFYONLTE_MTR) \
-	|| defined(CONFIG_SEC_RUBENS_PROJECT)
+#if defined(CONFIG_SEC_CONFIGURE_ISP_STOP)
 	vfe_dev->axi_data.stream_update = 1;
 #else
 	vfe_dev->axi_data.stream_update = 2;
@@ -1017,9 +1022,7 @@ static void msm_isp_get_stream_wm_mask(
 		*wm_reload_mask |= (1 << stream_info->wm[i]);
 }
 
-#if defined(CONFIG_MACH_AFYONLTE_TMO) \
-	|| defined(CONFIG_MACH_AFYONLTE_MTR) \
-	|| defined(CONFIG_SEC_RUBENS_PROJECT)
+#if defined(CONFIG_SEC_CONFIGURE_ISP_STOP)
 
 static void msm_isp_axi_stream_update_new(struct vfe_device *vfe_dev, enum msm_isp_camif_update_state camif_update)
 {
@@ -1090,9 +1093,7 @@ static int msm_isp_start_axi_stream(struct vfe_device *vfe_dev,
 		vfe_dev->hw_info->vfe_ops.core_ops.
 			update_camif_state(vfe_dev, camif_update);
 	}
-#if defined(CONFIG_MACH_AFYONLTE_TMO) \
-	|| defined(CONFIG_MACH_AFYONLTE_MTR) \
-	|| defined(CONFIG_SEC_RUBENS_PROJECT)
+#if defined(CONFIG_SEC_CONFIGURE_ISP_STOP)
 	if (wait_for_complete){
 		msm_isp_axi_stream_update_new(vfe_dev, camif_update);
 		rc = msm_isp_axi_wait_for_cfg_done(vfe_dev, camif_update);
@@ -1117,9 +1118,7 @@ static int msm_isp_stop_axi_stream(struct vfe_device *vfe_dev,
 			HANDLE_TO_IDX(stream_cfg_cmd->stream_handle[i])];
 		stream_info->state = STOP_PENDING;
 	}
-#if defined(CONFIG_MACH_AFYONLTE_TMO) \
-	|| defined (CONFIG_MACH_AFYONLTE_MTR) \
-	|| defined(CONFIG_SEC_RUBENS_PROJECT)
+#if defined(CONFIG_SEC_CONFIGURE_ISP_STOP)
 	pr_err("[richard] %s : state [%d], camif_update [%d]\n", __func__, stream_info->state, camif_update);
 	msm_isp_axi_stream_update_new(vfe_dev, DISABLE_CAMIF);
 	rc = msm_isp_axi_wait_for_cfg_done(vfe_dev, NO_UPDATE);
@@ -1143,6 +1142,9 @@ static int msm_isp_stop_axi_stream(struct vfe_device *vfe_dev,
 	if (camif_update == DISABLE_CAMIF)
 		vfe_dev->hw_info->vfe_ops.core_ops.
 			update_camif_state(vfe_dev, DISABLE_CAMIF);
+	else if (camif_update == DISABLE_CAMIF_IMMEDIATELY)
+		vfe_dev->hw_info->vfe_ops.core_ops.
+			update_camif_state(vfe_dev, DISABLE_CAMIF_IMMEDIATELY);
 	msm_isp_update_camif_output_count(vfe_dev, stream_cfg_cmd);
 
 	for (i = 0; i < stream_cfg_cmd->num_streams; i++) {

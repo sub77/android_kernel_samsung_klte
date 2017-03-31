@@ -18,6 +18,9 @@
 #elif defined(CONFIG_MFD_MAX77804K)
 #include <linux/mfd/max77804k.h>
 #endif
+#ifdef CONFIG_USB_SWITCH_FSA9485
+#include <linux/i2c/fsa9485.h>
+#endif
 #ifdef pr_fmt
 #undef pr_fmt
 #endif
@@ -93,6 +96,11 @@ static void hnotifier_work(struct work_struct *w)
 		break;
 	case HNOTIFY_OVERCURRENT:
 		pr_info("OVP\n");
+#ifdef CONFIG_USB_SWITCH_FSA9485
+		if(check_mmdock_connect())			/*check mmdock is connected , return 1 - True , 0 - False*/
+			host_state_notify(&pinfo->ndev,	NOTIFY_HOST_NONE);
+		else
+#endif
 		host_state_notify(&pinfo->ndev,	NOTIFY_HOST_OVERCURRENT);
 		break;
 	case HNOTIFY_OTG_POWER_ON:

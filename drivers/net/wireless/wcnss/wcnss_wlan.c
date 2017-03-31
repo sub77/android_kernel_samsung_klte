@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2013,2015 The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -45,10 +45,6 @@
 
 #ifdef CONFIG_WCNSS_MEM_PRE_ALLOC
 #include "wcnss_prealloc.h"
-#endif
-
-#ifdef CONFIG_WCNSS_IRIS_REGISTER_DUMP
-#include <mach/board.h>
 #endif
 
 #define DEVICE "wcnss_wlan"
@@ -144,10 +140,6 @@ static DEFINE_SPINLOCK(reg_spinlock);
 #define WCNSS_TSTBUS_CTRL_WRFIFO	(0x04 << 1)
 #define WCNSS_TSTBUS_CTRL_RDFIFO	(0x05 << 1)
 #define WCNSS_TSTBUS_CTRL_CTRL		(0x07 << 1)
-//#define WCNSS_TSTBUS_CTRL_AXIM_CFG0	(0x00 << 6)
-//#define WCNSS_TSTBUS_CTRL_AXIM_CFG1	(0x01 << 6)
-//#define WCNSS_TSTBUS_CTRL_CTRL_CFG0	(0x00 << 12)
-//#define WCNSS_TSTBUS_CTRL_CTRL_CFG1	(0x01 << 12)
 #define WCNSS_TSTBUS_CTRL_AXIM_CFG0	(0x00 << 8)
 #define WCNSS_TSTBUS_CTRL_AXIM_CFG1	(0x01 << 8)
 #define WCNSS_TSTBUS_CTRL_CTRL_CFG0	(0x00 << 28)
@@ -414,7 +406,6 @@ static struct {
 	void __iomem *alarms_txctl;
 	void __iomem *alarms_tactl;
 	void __iomem *fiq_reg;
-	int	ssr_boot;
 	int	nv_downloaded;
 	unsigned char *fw_cal_data;
 	unsigned char *user_cal_data;
@@ -898,6 +889,22 @@ static void wcnss_log_iris_regs(void)
 	}
 }
 
+int wcnss_get_mux_control(void)
+{
+	void __iomem *pmu_conf_reg;
+	u32 reg = 0;
+
+	if (NULL == penv)
+		return 0;
+
+	pmu_conf_reg = penv->msm_wcnss_base + PRONTO_PMU_OFFSET;
+	writel_relaxed(0, pmu_conf_reg);
+	reg = readl_relaxed(pmu_conf_reg);
+	reg |= WCNSS_PMU_CFG_GC_BUS_MUX_SEL_TOP;
+	writel_relaxed(reg, pmu_conf_reg);
+	return 1;
+}
+
 void wcnss_log_debug_regs_on_bite(void)
 {
 	struct platform_device *pdev = wcnss_get_platform_device();
@@ -920,6 +927,8 @@ void wcnss_log_debug_regs_on_bite(void)
 
 		if (clk_rate) {
 			wcnss_pronto_log_debug_regs();
+			if (wcnss_get_mux_control())
+				wcnss_log_iris_regs();
 		} else {
 			pr_err("clock frequency is zero, cannot access PMU or other registers\n");
 			wcnss_log_iris_regs();
@@ -933,6 +942,8 @@ void wcnss_reset_intr(void)
 {
 	if (wcnss_hardware_type() == WCNSS_PRONTO_HW) {
 		wcnss_pronto_log_debug_regs();
+		if (wcnss_get_mux_control())
+			wcnss_log_iris_regs();
 		wmb();
 		__raw_writel(1 << 16, penv->fiq_reg);
 	} else {
@@ -990,20 +1001,20 @@ static void wcnss_remove_sysfs(struct device *dev)
 
 static void wcnss_pm_qos_add_request(void)
 {
-	pr_info("%s: add request", __func__);
+	pr_info("%s: add request\n", __func__);
 	pm_qos_add_request(&penv->wcnss_pm_qos_request, PM_QOS_CPU_DMA_LATENCY,
 			PM_QOS_DEFAULT_VALUE);
 }
 
 static void wcnss_pm_qos_remove_request(void)
 {
-	pr_info("%s: remove request", __func__);
+	pr_info("%s: remove request\n", __func__);
 	pm_qos_remove_request(&penv->wcnss_pm_qos_request);
 }
 
 void wcnss_pm_qos_update_request(int val)
 {
-	pr_info("%s: update request %d", __func__, val);
+	pr_info("%s: update request %d\n", __func__, val);
 	pm_qos_update_request(&penv->wcnss_pm_qos_request, val);
 }
 
@@ -1058,8 +1069,6 @@ static void wcnss_smd_notify_event(void *data, unsigned int event)
 	case SMD_EVENT_CLOSE:
 		pr_debug("wcnss: closing WCNSS SMD channel :%s",
 				WCNSS_CTRL_CHANNEL);
-		/* This SMD is closed only during SSR */
-		penv->ssr_boot = true;
 		penv->nv_downloaded = 0;
 		break;
 
@@ -1357,7 +1366,6 @@ EXPORT_SYMBOL(wcnss_get_serial_number);
 
 int wcnss_get_wlan_mac_address(char mac_addr[WLAN_MAC_ADDR_SIZE])
 {
-      return -1;
 	if (!penv)
 		return -ENODEV;
 
@@ -1810,8 +1818,10 @@ static void wcnssctrl_rx_handler(struct work_struct *worker)
 		smd_read(penv->smd_ch, NULL, len);
 		return;
 	}
-	if (len <= 0)
+	if (len < sizeof(struct smd_msg_hdr)) {
+		pr_err("wcnss: incomplete header available len = %d\n", len);
 		return;
+	}
 
 	rc = smd_read(penv->smd_ch, buf, sizeof(struct smd_msg_hdr));
 	if (rc < sizeof(struct smd_msg_hdr)) {
@@ -1907,7 +1917,6 @@ static void wcnssctrl_rx_handler(struct work_struct *worker)
 		break;
 
 	case WCNSS_CALDATA_UPLD_REQ:
-		penv->fw_cal_available = 0;
 		extract_cal_data(len);
 		break;
 
@@ -1961,13 +1970,13 @@ static void wcnss_send_pm_config(struct work_struct *worker)
 		return;
 	}
 
-	pr_debug("%s:size=%d: <%d, %d, %d, %d, %d>\n", __func__,
+	pr_debug("%s:size=%d: <%d, %d, %d, %d, %d %d>\n", __func__,
 			prop_len, *payload, *(payload+1), *(payload+2),
-			*(payload+3), *(payload+4));
+			*(payload+3), *(payload+4), *(payload+5));
 
 	hdr = (struct smd_msg_hdr *)msg;
 	hdr->msg_type = WCNSS_PM_CONFIG_REQ;
-	hdr->msg_len = sizeof(struct smd_msg_hdr) + prop_len;
+	hdr->msg_len = sizeof(struct smd_msg_hdr) + (prop_len * sizeof(int));
 
 	rc = wcnss_smd_tx(msg, hdr->msg_len);
 	if (rc < 0)
@@ -1993,9 +2002,7 @@ static void wcnss_nvbin_dnld(void)
 	const struct firmware *nv = NULL;
 	struct device *dev = &penv->pdev->dev;
 
-  pr_err("wcnss: wcnss_nvbin_dnld \n");
 	down_read(&wcnss_pm_sem);
-  pr_err("wcnss: request_firmware \n");
 
 	ret = request_firmware(&nv, NVBIN_FILE, dev);
 
@@ -2014,8 +2021,8 @@ static void wcnss_nvbin_dnld(void)
 
 	total_fragments = TOTALFRAGMENTS(nv_blob_size);
 
-  pr_err("wcnss: NV bin size: %d, total_fragments: %d\n",
-  nv_blob_size, total_fragments);
+	pr_info("wcnss: NV bin size: %d, total_fragments: %d\n",
+		nv_blob_size, total_fragments);
 
 	/* get buffer for nv bin dnld req message */
 	outbuffer = kmalloc((sizeof(struct nvbin_dnld_req_msg) +

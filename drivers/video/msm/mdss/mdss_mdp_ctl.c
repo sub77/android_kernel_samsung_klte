@@ -398,13 +398,13 @@ int mdss_mdp_perf_calc_pipe(struct mdss_mdp_pipe *pipe,
 	} else {
 		perf->bw_overlap = (quota / dst.h) * v_total;
 	}
-
+#if !defined(CONFIG_MACH_VIENNA)
      /* The following change has been taken from CL 2767750. The bw has been increased as a fix
       * for underrun during UHD video play cases. */
 	if ( ((pipe->src.h * pipe->src.w) / (pipe->dst.h * pipe->dst.w)) > 6) {
 		perf->bw_overlap = perf->bw_overlap * 2;
 	}
-
+#endif
 	if (apply_fudge)
 		perf->mdp_clk_rate = mdss_mdp_clk_fudge_factor(mixer, rate);
 	else
@@ -752,7 +752,8 @@ static void mdss_mdp_perf_calc_ctl(struct mdss_mdp_ctl *ctl,
 			left_plist, (left_plist ? MDSS_MDP_MAX_STAGE : 0),
 			right_plist, (right_plist ? MDSS_MDP_MAX_STAGE : 0));
 
-	if (ctl->is_video_mode || mdss_mdp_video_mode_intf_connected(ctl)) {
+	if (ctl->is_video_mode || ((ctl->intf_type != MDSS_MDP_NO_INTF) &&
+		mdss_mdp_video_mode_intf_connected(ctl))) {
 		perf->bw_ctl =
 			max(apply_fudge_factor(perf->bw_overlap,
 				&mdss_res->ib_factor_overlap),
@@ -2656,7 +2657,7 @@ int mdss_mdp_display_commit(struct mdss_mdp_ctl *ctl, void *arg)
 	int mixer1_changed, mixer2_changed;
 	int ret = 0;
 	bool is_bw_released;
-
+	
 	if (!ctl) {
 		pr_err("display function not set\n");
 		return -ENODEV;
@@ -2729,7 +2730,7 @@ int mdss_mdp_display_commit(struct mdss_mdp_ctl *ctl, void *arg)
 	if (ctl->wait_pingpong)
 		ctl->wait_pingpong(ctl, NULL);
 	ATRACE_END("wait_pingpong");
-
+	
 	ctl->roi_bkup.w = ctl->roi.w;
 	ctl->roi_bkup.h = ctl->roi.h;
 
