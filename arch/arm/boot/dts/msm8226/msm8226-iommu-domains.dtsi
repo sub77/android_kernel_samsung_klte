@@ -10,13 +10,23 @@
  * GNU General Public License for more details.
  */
 
+&soc {
+	qcom,iommu-domains {
+		compatible = "qcom,iommu-domains";
 
-/dts-v1/;
-/include/ "apq8026-v2.dtsi"
-/include/ "msm8226-720p-mtp.dtsi"
+		venus_domain_ns: qcom,iommu-domain1 {
+			label = "venus_ns";
+			qcom,iommu-contexts = <&venus_ns>;
+			qcom,virtual-addr-pool = <0x40000000 0x3f000000
+						  0x7f000000 0x1000000>;
+		};
 
-/ {
-	model = "Qualcomm APQ 8026v2 MTP";
-	compatible = "qcom,apq8026-mtp", "qcom,apq8026", "qcom,mtp";
-	qcom,board-id = <8 0>;
+		venus_domain_cp: qcom,iommu-domain2 {
+			label = "venus_cp";
+			qcom,iommu-contexts = <&venus_cp>;
+			qcom,virtual-addr-pool = <0x1000000 0x1f800000
+						  0x20800000 0x1f800000>;
+			qcom,secure-domain;
+		};
+	};
 };
