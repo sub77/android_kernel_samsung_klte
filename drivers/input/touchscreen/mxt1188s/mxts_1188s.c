@@ -1055,10 +1055,11 @@ static void mxt_report_input_data(struct mxt_data *data)
 			input_sync(data->input_dev);
 	}
 
+#ifdef CONFIG_SEC_DVFS
 #if TSP_BOOSTER
 	mxt_set_dvfs_lock(data, count);
 #endif
-
+#endif
 	data->finger_mask = 0;
 }
 
@@ -1192,8 +1193,10 @@ static void mxt_release_all_keys(struct mxt_data *data)
 					input_report_key(data->input_dev, KEY_RECENT, KEY_RELEASE);
 						dev_info(&data->client->dev,
 							"%s: [TSP_KEY] menu R!\n", __func__);
+#ifdef CONFIG_SEC_DVFS
 #if MXT_TKEY_BOOSTER
 						mxt_tkey_set_dvfs_lock(data, !!KEY_RELEASE);
+#endif
 #endif
 				}
 			}
@@ -1209,8 +1212,10 @@ static void mxt_release_all_keys(struct mxt_data *data)
 					input_report_key(data->input_dev, KEY_BACK, KEY_RELEASE);
 						dev_info(&data->client->dev,
 							"%s: [TSP_KEY] back R!\n", __func__);
+#ifdef CONFIG_SEC_DVFS
 #if MXT_TKEY_BOOSTER
 						mxt_tkey_set_dvfs_lock(data, !!KEY_RELEASE);
+#endif
 #endif
 			}
 		}
@@ -1282,8 +1287,10 @@ static void mxt_treat_T15_object(struct mxt_data *data,
 					dev_info(&data->client->dev,
 						"%s: [TSP_KEY] menu %s\n",
 								__func__, key_state != 0 ? "P" : "R");
+#ifdef CONFIG_SEC_DVFS
 #if MXT_TKEY_BOOSTER
 						mxt_tkey_set_dvfs_lock(data, !!key_state);
+#endif
 #endif
 				}
 			}
@@ -1307,8 +1314,10 @@ static void mxt_treat_T15_object(struct mxt_data *data,
 					dev_info(&data->client->dev,
 							"%s: [TSP_KEY] back %s\n" ,
 							__func__, key_state != 0 ? "P" : "R");
+#ifdef CONFIG_SEC_DVFS
 #if MXT_TKEY_BOOSTER
 						mxt_tkey_set_dvfs_lock(data, !!key_state);
+#endif
 #endif
 				}
 			}
@@ -2285,8 +2294,10 @@ static int mxt_stop(struct mxt_data *data)
 #if ENABLE_TOUCH_KEY
 	mxt_release_all_keys(data);
 #endif
+#ifdef CONFIG_SEC_DVFS
 #if TSP_BOOSTER
 	mxt_set_dvfs_lock(data, -1);
+#endif
 #endif
 
 	data->mxt_enabled = false;
@@ -2438,11 +2449,15 @@ static int mxt_touch_finish_init(struct mxt_data *data)
 		goto err_req_irq;
 	}
 
+#ifdef CONFIG_SEC_DVFS
 #if TSP_BOOSTER
 	mxt_init_dvfs(data);
 #endif
+#endif
+#ifdef CONFIG_SEC_DVFS
 #if MXT_TKEY_BOOSTER
 	mxt_tkey_init_dvfs(data);
+#endif
 #endif
 
 	dev_info(&client->dev,  "Mxt touch controller initialized\n");
