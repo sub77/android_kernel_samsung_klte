@@ -1951,16 +1951,12 @@ static void wcnssctrl_rx_handler(struct work_struct *worker)
 		pr_debug("wcnss: received WCNSS_CALDATA_DNLD_RSP from ccpu %u\n",
 			fw_status);
 		break;
+
 	case WCNSS_CBC_COMPLETE_IND:
 		penv->is_cbc_done = 1;
 		pr_debug("wcnss: received WCNSS_CBC_COMPLETE_IND from FW\n");
 		break;
-		
-	case WCNSS_CBC_COMPLETE_IND:
-		penv->is_cbc_done = 1;
-		pr_debug("wcnss: received WCNSS_CBC_COMPLETE_IND from FW\n");
-		break;
-		
+
 	case WCNSS_CALDATA_UPLD_REQ:
 		extract_cal_data(len);
 		break;
@@ -2854,7 +2850,6 @@ static const struct file_operations wcnss_node_fops = {
 	.open = wcnss_node_open,
 	.read = wcnss_wlan_read,
 	.write = wcnss_wlan_write,
-	.release = wcnss_node_release,
 };
 
 static struct miscdevice wcnss_misc = {
