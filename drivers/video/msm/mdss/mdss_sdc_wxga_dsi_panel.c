@@ -1356,7 +1356,7 @@ static struct lcd_ops mdss_dsi_disp_props = {
 
 };
 
-#if defined(CONFIG_SEC_RUBENS_PROJECT)
+#if defined(CONFIG_SEC_RUBENS_PROJECTXX)
 static ssize_t mdss_auto_brightness_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
 {
@@ -2074,7 +2074,7 @@ int mdss_dsi_panel_init(struct device_node *node,
 		pr_info("backlight : failed to register device\n");
 		return rc;
 	}
-#if defined(CONFIG_SEC_RUBENS_PROJECT)
+#if defined(CONFIG_SEC_RUBENS_PROJECTXX)
 	rc= sysfs_create_file(&bd->dev.kobj,
 					&dev_attr_auto_brightness.attr);
 	if (rc) {

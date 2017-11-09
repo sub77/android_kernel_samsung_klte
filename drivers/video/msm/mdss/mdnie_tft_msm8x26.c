@@ -49,6 +49,8 @@
 #include "mdnie_tft_data_t10_t8.h"
 #elif defined(CONFIG_MACH_MEGA23GEUR_OPEN)
 #include "mdnie_tft_data_mega23g.h"
+#elif defined(CONFIG_SEC_RUBENS_PROJECT) || defined(CONFIG_MACH_RUBENSLTE_OPEN)
+#include "mdnie_tft_data_rubens.h"
 #endif
 
 int get_lcd_attached(void);
